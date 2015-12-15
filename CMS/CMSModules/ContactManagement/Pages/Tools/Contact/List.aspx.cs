@@ -78,7 +78,7 @@ public partial class CMSModules_ContactManagement_Pages_Tools_Contact_List : CMS
         var deletingInactiveContactsMethod = SettingsKeyInfoProvider.GetValue("CMSDeleteInactiveContactsMethod", SiteContext.CurrentSiteID);
         if (string.IsNullOrEmpty(deletingInactiveContactsMethod))
         {
-            ShowWarning(string.Format(GetString("om.contactlist.inactivecontacts.warning"), "https://docs.kentico.com/x/9QKOAw"));                
+            ShowWarning(string.Format(GetString("om.contactlist.inactivecontacts.warning"), "https://docs.kentico.com/x/VAKOAw"));                
         }
     }
 

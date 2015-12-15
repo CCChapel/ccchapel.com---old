@@ -213,6 +213,13 @@ public class UserListExtender : ControlExtender<UniGrid>
                         return;
                     }
 
+                    // It is not possible to delete default global administrator 
+                    if (userId == UserInfoProvider.AdministratorUser.UserID)
+                    {
+                        ((CMSPage)Control.Page).ShowError(ResHelper.GetString("Administration-User_List.ErrorDefaultUser"));
+                        return;
+                    }
+
                     SessionManager.RemoveUser(userId);
                     UserInfoProvider.DeleteUser(delUser.UserName);
                 }

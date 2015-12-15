@@ -13,8 +13,8 @@
         </cms:CMSPanel>
         <cms:CMSPanel ID="pnlCenter" runat="server" ShortID="pc" CssClass="CenterPiece">
             <div class="CenterPanel">
-                <iframe width="100%" height="100%" id="pageview" name="pageview" scrolling="<%=framescroll%>"
-                    frameborder="0" src="<%=mViewPage%>" class="ContentFrame scroll-area"></iframe>
+                <iframe width="100%" height="100%" id="pageview" name="pageview" scrolling="<%=FrameScroll%>"
+                    frameborder="0" src="<%=ViewPageSource%>" class="ContentFrame scroll-area"></iframe>
             </div>
         </cms:CMSPanel>
         <cms:CMSPanel ID="pnlRight" runat="server" ShortID="pr" CssClass="RightPiece">

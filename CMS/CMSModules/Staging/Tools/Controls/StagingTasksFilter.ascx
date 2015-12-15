@@ -14,7 +14,7 @@
                     DisplayColon="true" EnableViewState="false" />
             </div>
             <div class="filter-form-value-cell-wide">
-                <cms:EnumSelector ID="taskTypeSelector" runat="server" AssemblyName="CMS.DataEngine" TypeName="CMS.DataEngine.TaskTypeEnum" EnableViewState="false"/>
+                <cms:EnumSelector ID="taskTypeSelector" runat="server" AssemblyName="CMS.DataEngine" TypeName="CMS.DataEngine.TaskTypeEnum" EnableViewState="true"/>
             </div>
         </div>
         <div class="form-group">
@@ -23,7 +23,7 @@
                     DisplayColon="true" EnableViewState="false"/>
             </div>
             <div class="filter-form-value-cell-wide">
-                <cms:UserSelector ID="userSelector" runat="server" Visible="true" SiteID="-1" SelectionMode="SingleDropDownList" AllowEmpty="true" AllowAll="true" EnableViewState="false"/>
+                <cms:UserSelector ID="userSelector" runat="server" Visible="true" SiteID="-1" SelectionMode="SingleDropDownList" AllowEmpty="true" AllowAll="true" EnableViewState="true"/>
             </div>
         </div>
         <asp:Panel runat="server" ID="stagingTaskGroupPanel">
@@ -33,7 +33,7 @@
                         DisplayColon="true" EnableViewState="false" />
                 </div>
                 <div class="filter-form-value-cell-wide">
-                    <cms:UniSelector ID="stagingTaskGroupSelector" runat="server" Visible="true" SelectionMode="SingleDropDownList" AllowEmpty="true" AllowAll="true" EnableViewState="false"/>
+                    <cms:UniSelector ID="stagingTaskGroupSelector" runat="server" Visible="true" SelectionMode="SingleDropDownList" AllowEmpty="true" AllowAll="true" EnableViewState="true"/>
                 </div>
             </div>
         </asp:Panel>

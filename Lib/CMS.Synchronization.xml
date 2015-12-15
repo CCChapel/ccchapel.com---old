@@ -4307,12 +4307,13 @@
             <param name="versionId">Version ID</param>
             <param name="procesChilds">Indicates if also child object should be restored</param>
         </member>
-        <member name="M:CMS.Synchronization.ObjectVersionManager.CreateVersion(CMS.DataEngine.GeneralizedInfo,System.Boolean)">
+        <member name="M:CMS.Synchronization.ObjectVersionManager.CreateVersion(CMS.DataEngine.GeneralizedInfo,System.Boolean,System.Boolean)">
             <summary>
             Creates object version.
             </summary>
             <param name="infoObj">IInfo object instance</param>
             <param name="forceVersion">Indicates if new version should be created instead of storing to existing one if possible</param>
+            <param name="includeTranslations">Indicates if the VersionXML should contain translations data</param>
         </member>
         <member name="M:CMS.Synchronization.ObjectVersionManager.EnsureVersion(CMS.DataEngine.GeneralizedInfo,System.Boolean)">
             <summary>
@@ -4481,12 +4482,13 @@
             <param name="siteId">ID of the site to which object should be restored</param>
             <returns>Restored object IInfo object</returns>
         </member>
-        <member name="M:CMS.Synchronization.ObjectVersionManager.UpdateVersionHistoryData(CMS.Synchronization.ObjectVersionHistoryInfo,CMS.DataEngine.BaseInfo)">
+        <member name="M:CMS.Synchronization.ObjectVersionManager.UpdateVersionHistoryData(CMS.Synchronization.ObjectVersionHistoryInfo,CMS.DataEngine.BaseInfo,System.Boolean)">
             <summary>
             Ensure object actual data in version history
             </summary>
             <param name="versionHistory">Version history object to update</param>
             <param name="infoObj">Object with actual data</param>
+            <param name="includeTranslations">Indicates if the VersionXML should contain translations data</param>
         </member>
         <member name="M:CMS.Synchronization.ObjectVersionManager.CheckOut(CMS.DataEngine.BaseInfo,CMS.Base.IUserInfo)">
             <summary>

@@ -2900,11 +2900,24 @@
             Checks whether the request was made by crawler. If so, returns 403 Forbidden message.
             </summary>
         </member>
+        <member name="M:CMS.WebAnalytics.Filters.FilterCrawlersAttribute.#ctor">
+            <summary>
+            Creates new instance of <see cref="T:CMS.WebAnalytics.Filters.FilterCrawlersAttribute"/> with <see cref="T:CMS.WebAnalytics.ISearchEnginesDetector"/> resolved from service locator.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.Filters.FilterCrawlersAttribute.#ctor(CMS.WebAnalytics.ISearchEnginesDetector)">
+            <summary>
+            Creates new instance of <see cref="T:CMS.WebAnalytics.Filters.FilterCrawlersAttribute"/>.
+            </summary>
+            <param name="searchEnginesDetector">Implementation of <see cref="T:CMS.WebAnalytics.ISearchEnginesDetector"/> used to detect seach engines.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="searchEnginesDetector"/> is <c>null</c>.</exception>
+        </member>
         <member name="M:CMS.WebAnalytics.Filters.FilterCrawlersAttribute.OnAuthorization(System.Web.Http.Controllers.HttpActionContext)">
             <summary>
             Calls when a process requests authorization.
             </summary>
             <param name="actionContext">The action context, which encapsulates information for using <see cref="T:System.Web.Http.Filters.AuthorizationFilterAttribute"/>.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="actionContext"/> is null.</exception>
         </member>
         <member name="T:CMS.WebAnalytics.ILogHitsProvider">
             <summary>
@@ -3775,6 +3788,113 @@
             <summary>
             Replaceable referrer (checks "AnalyticsReferrerString" item in RequestStockHelper first).
             </summary>
+        </member>
+        <member name="T:CMS.WebAnalytics.ISearchEnginesDetector">
+            <summary>
+            Provides information whether current request was made by search engine
+            based on current request and ExcludeSearchEngines settings.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.ISearchEnginesDetector.IsSearchEngine(System.String)">
+            <summary>
+            Returns whether request was made by search engine with respect to site settings.
+            </summary>
+            <param name="siteName">Name of site</param>
+            <returns><c>true</c> if request was made by search engine and exclude search engines setting is active otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:CMS.WebAnalytics.SearchEnginesDetector">
+            <summary>
+            Provides information whether current request was made by search engine
+            based on current request and ExcludeSearchEngines settings.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.SearchEnginesDetector.#ctor(CMS.WebAnalytics.IRequestInformation,CMS.WebAnalytics.IWebAnalyticsSettingsProvider)">
+            <summary>
+            Creates new instance of <see cref="T:CMS.WebAnalytics.SearchEnginesDetector"/>.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="requestInformation"/> or <paramref name="webAnalyticsSettingsProvider"/> is <c>null</c></exception>
+        </member>
+        <member name="M:CMS.WebAnalytics.SearchEnginesDetector.IsSearchEngine(System.String)">
+            <summary>
+            Returns whether request was made by search engine with respect to site settings.
+            </summary>
+            <param name="siteName">Name of site</param>
+            <returns><c>true</c> if request was made by search engine and exclude search engines setting is active otherwise <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="siteName"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:CMS.WebAnalytics.IRequestInformation">
+            <summary>
+            Provides information about current request.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.IRequestInformation.IsCrawlerRequest">
+            <summary>
+            Checks whether current request was mad by search crawler.
+            </summary>
+            <returns><c>True</c> if request was made by crawler otherwise <c>false</c></returns>
+        </member>
+        <member name="M:CMS.WebAnalytics.IRequestInformation.GetBrowserInformation">
+            <summary>
+            Returns information about browser as name and version in string representation.
+            </summary>
+            <returns>Browser information or <c>null</c> if no request identified</returns>
+        </member>
+        <member name="T:CMS.WebAnalytics.RequestInformation">
+            <summary>
+            Provides information about current request.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.RequestInformation.IsCrawlerRequest">
+            <summary>
+            Checks whether current request was mad by search crawler.
+            </summary>
+            <returns><c>True</c> if request was made by crawler otherwise <c>false</c></returns>
+        </member>
+        <member name="M:CMS.WebAnalytics.RequestInformation.GetBrowserInformation">
+            <summary>
+            Returns information about browser as name and version in string representation.
+            </summary>
+            <returns>Browser information or <c>null</c> if no request identified</returns>
+        </member>
+        <member name="T:CMS.WebAnalytics.IWebAnalyticsSettingsProvider">
+            <summary>
+            Provides access to WebAnalytics settings.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.IWebAnalyticsSettingsProvider.ExcludeSearchEngines(System.String)">
+            <summary>
+            Defines whether search engines should be excluded.
+            </summary>
+            <param name="siteName">Site name</param>
+            <returns><c>True</c> if search engines should be excluded otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:CMS.WebAnalytics.IWebAnalyticsSettingsProvider.TrackBrowserTypesEnabled(System.String)">
+            <summary>
+            Defines whether tarcking of browser types is enabled
+            </summary>
+            <param name="siteName">Site name</param>
+            <returns><c>True</c> if browser types should be tracked otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:CMS.WebAnalytics.WebAnalyticsSettingsProvider">
+            <summary>
+            Provides access to WebAnalytics settings.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.WebAnalyticsSettingsProvider.ExcludeSearchEngines(System.String)">
+            <summary>
+            Defines whether search engines should be excluded.
+            </summary>
+            <param name="siteName">Site name</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="siteName"/> is <c>null</c>.</exception>
+            <returns><c>True</c> if search engines should be excluded otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:CMS.WebAnalytics.WebAnalyticsSettingsProvider.TrackBrowserTypesEnabled(System.String)">
+            <summary>
+            Defines whether tarcking of browser types is enabled
+            </summary>
+            <param name="siteName">Site name</param>
+            <returns><c>True</c> if browser types should be tracked otherwise <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="siteName"/> is <c>null</c>.</exception>
         </member>
         <member name="T:CMS.WebAnalytics.AnalyticsMethods">
             <summary>
@@ -6830,6 +6950,53 @@
             <summary>
             Physical directory path
             </summary>
+        </member>
+        <member name="T:CMS.WebAnalytics.IHitLogger">
+            <summary>
+            Service used to log page hits.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.IHitLogger.LogBrowserInformation(System.String,System.String)">
+            <summary>
+            Logs information about browser hit.
+            </summary>
+            <param name="siteName">Name of hit site</param>
+            <param name="browserInformation">Browser information</param>
+        </member>
+        <member name="T:CMS.WebAnalytics.HitLogger">
+            <summary>
+            Service used to log page hits.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.HitLogger.LogBrowserInformation(System.String,System.String)">
+            <summary>
+            Logs information about browser hit.
+            </summary>
+            <param name="siteName">Name of hit site</param>
+            <param name="browserInformation">Browser information</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="siteName"/> or <paramref name="browserInformation"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:CMS.WebAnalytics.BrowserHitLogger">
+            <summary>
+            Represents logging of browser hits.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.BrowserHitLogger.#ctor(CMS.WebAnalytics.IHitLogger,CMS.WebAnalytics.IWebAnalyticsSettingsProvider,CMS.WebAnalytics.IRequestInformation)">
+            <summary>
+            Creates new instance of <see cref="T:CMS.WebAnalytics.BrowserHitLogger"/>.
+            </summary>
+            <param name="hitLogger">Implementation of <see cref="T:CMS.WebAnalytics.IHitLogger"/> used to log browser hits.</param>
+            <param name="webAnalyticsSettingsProvider">Implementation of <see cref="T:CMS.WebAnalytics.IWebAnalyticsSettingsProvider"/> used to check whether logging is enabled.</param>
+            <param name="requestInformation">Implementation of <see cref="T:CMS.WebAnalytics.IRequestInformation"/> used to check whether request was made by search engine.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="hitLogger"/> or <paramref name="webAnalyticsSettingsProvider"/> 
+                                                    or <paramref name="requestInformation"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:CMS.WebAnalytics.BrowserHitLogger.LogBrowser(System.String)">
+            <summary>
+            Logs browser hit for given site name.
+            </summary>
+            <param name="siteName">Site name</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="siteName"/> is <c>null</c>.</exception>
         </member>
         <member name="T:CMS.WebAnalytics.HitsInfo">
             <summary>

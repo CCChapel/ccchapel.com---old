@@ -6,6 +6,7 @@ using CMS.SiteProvider;
 using CMS.UIControls;
 using CMS.ExtendedControls;
 using CMS.DataEngine;
+using CMS.LicenseProvider;
 
 public partial class CMSModules_Forums_Controls_Forums_ForumNew : CMSAdminEditControl
 {
@@ -285,8 +286,8 @@ public partial class CMSModules_Forums_Controls_Forums_ForumNew : CMSAdminEditCo
         // Get community group identificators
         int communityGroupId = 0;
         Guid communityGroupGuid = Guid.Empty;
-        
-        if (ForumGroup != null)
+
+        if ((ForumGroup != null) && LicenseKeyInfoProvider.IsFeatureAvailable(FeatureEnum.Groups))
         {
             BaseInfo communityGroup = ModuleCommands.CommunityGetGroupInfo(ForumGroup.GroupGroupID);
 

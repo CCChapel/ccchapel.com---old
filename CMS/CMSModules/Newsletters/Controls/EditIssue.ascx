@@ -118,6 +118,15 @@
                                 </div>
                             </div>
                         </asp:Panel>
+                        <asp:Panel CssClass="form-group" runat="server" ID="pnlIssueUTMCampaignTextBox">
+                            <div class="editing-form-label-cell">
+                                <cms:LocalizedLabel CssClass="control-label" ID="lblIssueUTMCampaignTextBox" runat="server" ResourceString="newsletterissue.utm.campaign"
+                                    DisplayColon="true" EnableViewState="false" AssociatedControlID="txtIssueUTMCampaignTextBox" ShowRequiredMark="True" />
+                            </div>
+                            <div class="editing-form-value-cell">
+                                <cms:CMSTextBox ID="txtIssueUTMCampaignTextBox" runat="server" MaxLength="200" />
+                            </div>
+                        </asp:Panel>
                     </asp:Panel>
                 </asp:PlaceHolder>
             </div>

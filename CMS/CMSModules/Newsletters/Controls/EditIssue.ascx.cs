@@ -3,7 +3,10 @@ using System.Linq;
 using System.Text;
 using System.Web.UI;
 
+using CMS.DataEngine;
+using CMS.ExtendedControls;
 using CMS.Helpers;
+using CMS.LicenseProvider;
 using CMS.MacroEngine;
 using CMS.Newsletters;
 using CMS.SiteProvider;
@@ -20,6 +23,8 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
     private int mTemplateID;
     private const string DEFAULT_UTM_MEDIUM = "email";
     private NewsletterInfo mNewsletter;
+    private bool mAreCampaignsAvailable;
+    private CMSTextBox mUTMCampaignTextBox;
 
     #endregion
 
@@ -122,6 +127,10 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
         {
             return;
         }
+
+        mAreCampaignsAvailable = LicenseKeyInfoProvider.IsFeatureAvailable(RequestContext.CurrentDomain, FeatureEnum.CampaignAndConversions);
+        ToggleUTMCampaignInput();
+        mUTMCampaignTextBox = GetUTMCampaignTextBox();
 
         ReloadData(false);
     }
@@ -232,13 +241,13 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
                 }
 
                 // Prevent selecting none value in campaign selector if there is no campaign
-                if (CampaignInfoProvider.GetCampaigns().OnSite(SiteContext.CurrentSiteID).Count == 0)
+                if (mAreCampaignsAvailable && CampaignInfoProvider.GetCampaigns().OnSite(SiteContext.CurrentSiteID).Count == 0)
                 {
                     radUTMCampaignExisting.Checked = false;
                     radUTMCampaignExisting.Enabled = false;
                     selectorUTMCampaign.Enabled = false;
                     radUTMCampaignNew.Checked = true;
-                    txtIssueUTMCampaign.Enabled = true;
+                    mUTMCampaignTextBox.Enabled = true;
                 }
 
                 // Initialize inputs and content controls
@@ -250,7 +259,7 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
 
                     if (issue != null)
                     {
-                        if (CampaignInfoProvider.GetCampaignByUTMCode(issue.IssueUTMCampaign, SiteContext.CurrentSiteName) != null)
+                        if (mAreCampaignsAvailable && (CampaignInfoProvider.GetCampaignByUTMCode(issue.IssueUTMCampaign, SiteContext.CurrentSiteName) != null))
                         {
                             selectorUTMCampaign.Value = issue.IssueUTMCampaign;
                             selectorUTMCampaign.Reload(forceReload);
@@ -259,13 +268,13 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
 
                             radUTMCampaignExisting.Checked = true;
                             radUTMCampaignNew.Checked = false;
-                            txtIssueUTMCampaign.Enabled = false;
+                            mUTMCampaignTextBox.Enabled = false;
                         }
                         else
                         {
-                            txtIssueUTMCampaign.Text = issue.IssueUTMCampaign;
-                            txtIssueUTMCampaign.Enabled = true;
-                            
+                            mUTMCampaignTextBox.Text = issue.IssueUTMCampaign;
+                            mUTMCampaignTextBox.Enabled = true;
+
                             radUTMCampaignExisting.Checked = false;
                             radUTMCampaignNew.Checked = true;
                             selectorUTMCampaign.Enabled = false;
@@ -281,9 +290,9 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
                             txtIssueUTMSource.Text = Normalize(Newsletter.NewsletterName + "_" + txtSubject.Text.Trim());
                         }
 
-                        if (string.IsNullOrEmpty(txtIssueUTMCampaign.Text.Trim()))
+                        if (string.IsNullOrEmpty(mUTMCampaignTextBox.Text.Trim()))
                         {
-                            txtIssueUTMCampaign.Text = Newsletter.NewsletterName.ToLower();
+                            mUTMCampaignTextBox.Text = Newsletter.NewsletterName.ToLower();
                         }
                     }
                 }
@@ -297,7 +306,7 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
                 // Set simple/advanced options visibility
                 InitSimpleAdvancedOptions();
 
-                txtIssueUTMCampaign.Attributes["placeholder"] = Newsletter.NewsletterName.ToLower();
+                mUTMCampaignTextBox.Attributes["placeholder"] = Newsletter.NewsletterName.ToLower();
 
                 // Set flag
                 mLoaded = true;
@@ -310,6 +319,38 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
         pnlUTMParameters.Visible = chkIssueUseUTM.Checked;
 
         InitTooltips(isABTest);
+    }
+
+
+    /// <summary>
+    /// Toggles form control for selecting the UTM campaign code of the issue.
+    /// </summary>
+    /// <remarks>
+    /// If campaigns are available for the current license, advanced control for selecting from existing campaigns is be used.
+    /// Otherwise, simple textbox is displayed.
+    /// </remarks>
+    private void ToggleUTMCampaignInput()
+    {
+        pnlIssueUTMCampaignTextBox.Visible = !mAreCampaignsAvailable;
+        pnlIssueUTMCampaign.Visible = mAreCampaignsAvailable;
+    }
+
+
+    /// <summary>
+    /// Gets reference to the textbox specifying the issue UTM campaign code. 
+    /// </summary>
+    /// <remarks>
+    /// There are two candidates for the textbox depending on whether campaigns are available for the current license or not.
+    /// </remarks>
+    /// <returns>Reference to the appropriate textbox</returns>
+    private CMSTextBox GetUTMCampaignTextBox()
+    {
+        if (mAreCampaignsAvailable)
+        {
+            return txtIssueUTMCampaign;
+        }
+
+        return txtIssueUTMCampaignTextBox;
     }
 
 
@@ -371,12 +412,12 @@ public partial class CMSModules_Newsletters_Controls_EditIssue : CMSAdminControl
 
                 if (radUTMCampaignNew.Checked)
                 {
-                    var normalizedUtmCampaign = Normalize(txtIssueUTMCampaign.Text.Trim());
+                    var normalizedUtmCampaign = Normalize(mUTMCampaignTextBox.Text.Trim());
                     if (string.IsNullOrEmpty(normalizedUtmCampaign))
                     {
                         normalizedUtmCampaign = Normalize(Newsletter.NewsletterName);
                     }
-                    txtIssueUTMCampaign.Text = issue.IssueUTMCampaign = normalizedUtmCampaign;
+                    mUTMCampaignTextBox.Text = issue.IssueUTMCampaign = normalizedUtmCampaign;
                 }
                 else
                 {

@@ -213,7 +213,8 @@ public partial class CMSModules_Membership_Pages_Users_User_Edit_Password : CMSU
     private void SendEmail(string subject, string pswd, string emailType, bool showPassword)
     {
         // Check whether the 'From' element was specified
-        string emailFrom = SettingsKeyInfoProvider.GetValue(SiteContext.CurrentSiteName + ".CMSSendPasswordEmailsFrom");
+        string siteName = SiteContext.CurrentSiteName;
+        string emailFrom = SettingsKeyInfoProvider.GetValue("CMSSendPasswordEmailsFrom", siteName);
         bool fromMissing = string.IsNullOrEmpty(emailFrom);
 
         if ((!string.IsNullOrEmpty(emailType)) && (UserInfo != null) && (!fromMissing))
@@ -251,8 +252,8 @@ public partial class CMSModules_Membership_Pages_Users_User_Edit_Password : CMSU
                 {
                     try
                     {
-                        // Get e-mail template
-                        EmailTemplateInfo template = EmailTemplateProvider.GetEmailTemplate(templateName, null);
+                        // Get e-mail template - try to get site specific template if edited user is assigned to current site
+                        EmailTemplateInfo template = EmailTemplateProvider.GetEmailTemplate(templateName, UserInfo.IsInSite(siteName) ? siteName : null);
                         if (template != null)
                         {
                             em.Body = template.TemplateText;
@@ -264,7 +265,7 @@ public partial class CMSModules_Membership_Pages_Users_User_Edit_Password : CMSU
                             EmailHelper.ResolveMetaFileImages(em, template.TemplateID, EmailTemplateInfo.OBJECT_TYPE, ObjectAttachmentsCategories.TEMPLATE);
 
                             // Send message immediately (+ resolve macros)
-                            EmailSender.SendEmailWithTemplateText(SiteContext.CurrentSiteName, em, template, resolver, true);
+                            EmailSender.SendEmailWithTemplateText(siteName, em, template, resolver, true);
 
                             // Inform on success
                             ShowConfirmation(GetString("Administration-User_Edit_Password.PasswordsSent") + " " + HTMLHelper.HTMLEncode(emailTo));

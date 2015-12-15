@@ -58,7 +58,7 @@ public partial class CMSModules_Groups_Tools_MessageBoards_Messages_Message_List
         {
             HeaderAction action = new HeaderAction();
             action.Text = GetString("Board.MessageList.NewMessage");
-            action.OnClientClick = "modalDialog('" + ResolveUrl("~/CMSModules/Groups/Tools/MessageBoards/Messages/Message_Edit.aspx") + "?boardId=" + mBoardId + "', 'MessageEdit', 500, 400); return false;";
+            action.OnClientClick = "modalDialog('" + ResolveUrl("~/CMSModules/Groups/Tools/MessageBoards/Messages/Message_Edit.aspx") + "?boardId=" + mBoardId + "', 'MessageEdit', 360, 490); return false;";
             CurrentMaster.HeaderActions.AddAction(action);
         }
     }

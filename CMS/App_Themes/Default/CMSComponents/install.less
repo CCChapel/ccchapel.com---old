@@ -347,6 +347,12 @@ td.wag-dialog-label {
     min-width: @base-unit * 36;
 }
 
+.database-separation .install-wizard,
+.database-join .install-wizard {
+    max-width: @base-unit * 36;
+    margin: 0 auto;
+}
+
 // Setting staging task state
 .task-error {
     color: @color-red-70;
@@ -366,9 +372,6 @@ td.wag-dialog-label {
 }
 
 .separation-header {
-    width: 620px !important;
-    margin: auto !important;
-    position: relative !important;
     border-top: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;

@@ -264,8 +264,6 @@ public partial class CMSModules_Widgets_Controls_WidgetProperties : CMSUserContr
     /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
-        LoadForm();
-
         // Override BasicStyles flag to ensure correct styles in widget properties on the dashboard
         MessagesPlaceHolder.BasicStyles = false;
         MessagesPlaceHolder.WrapperControlClientID = formCustom.ClientID;
@@ -313,6 +311,17 @@ public partial class CMSModules_Widgets_Controls_WidgetProperties : CMSUserContr
 
 
     #region "Public methods"
+
+    public void LoadData()
+    {
+        if (StopProcessing)
+        {
+            return;
+        }
+
+        LoadForm();
+    }
+
 
     /// <summary>
     /// Saves the widget properties and closes the window.

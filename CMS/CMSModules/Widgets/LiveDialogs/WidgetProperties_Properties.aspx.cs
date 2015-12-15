@@ -1,7 +1,5 @@
 ﻿using System;
 
-using CMS.Helpers;
-using CMS.PortalEngine;
 using CMS.UIControls;
 
 public partial class CMSModules_Widgets_LiveDialogs_WidgetProperties_Properties : CMSWidgetPropertiesLivePage
@@ -17,14 +15,10 @@ public partial class CMSModules_Widgets_LiveDialogs_WidgetProperties_Properties 
     }
 
 
-    /// <summary>
-    /// Load event handler.
-    /// </summary>
-    protected override void OnLoad(EventArgs e)
+    protected override void OnInit(EventArgs e)
     {
-        base.OnLoad(e);
+        base.OnInit(e);
 
-        // Initialize the control
         widgetProperties.AliasPath = aliasPath;
         widgetProperties.CultureCode = culture;
         widgetProperties.PageTemplateId = templateId;
@@ -38,6 +32,17 @@ public partial class CMSModules_Widgets_LiveDialogs_WidgetProperties_Properties 
         widgetProperties.ZoneType = zoneType;
         widgetProperties.IsLiveSite = true;
         widgetProperties.CurrentPageInfo = CurrentPageInfo;
+
+        widgetProperties.LoadData();
+    }
+
+
+    /// <summary>
+    /// Load event handler.
+    /// </summary>
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
 
         widgetProperties.OnNotAllowed += widgetProperties_OnNotAllowed;
 

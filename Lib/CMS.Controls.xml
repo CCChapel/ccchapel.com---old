@@ -1638,6 +1638,11 @@
             Binds a data source to the invoked server control and all its child controls.
             </summary>
         </member>
+        <member name="M:CMS.Controls.CMSUniView.CreateChildControls">
+            <summary>
+            Creates the control hierarchy that is used to render a composite data-bound control based on the values that are stored in view state.
+            </summary>
+        </member>
         <member name="M:CMS.Controls.CMSUniView.InitControl(System.Boolean)">
             <summary>
             Ensures default data binding 
@@ -1688,18 +1693,6 @@
             <summary>
             Releases the web part context.
             </summary>
-        </member>
-        <member name="M:CMS.Controls.CMSUniView.EnsurePager">
-            <summary>
-            Creates instance of unipager and bind this pager to the current control.
-            </summary>
-        </member>
-        <member name="M:CMS.Controls.CMSUniView.RemovedControl(System.Web.UI.Control)">
-            <summary>
-            Called after a child control is removed from controls collections.
-            Ensures unipager for current control
-            </summary>
-            <param name="control">Control instance</param>
         </member>
         <member name="P:CMS.Controls.CMSUniView.LoadHierarchicalData">
             <summary>
@@ -2255,6 +2248,11 @@
             Constructor.
             </summary>
         </member>
+        <member name="M:CMS.Controls.QueryUniView.CreateChildControls">
+            <summary>
+            Creates the control hierarchy that is used to render a composite data-bound control based on the values that are stored in view state.
+            </summary>
+        </member>
         <member name="M:CMS.Controls.QueryUniView.InitControl(System.Boolean)">
             <summary>
             Ensures default data binding 
@@ -2310,18 +2308,6 @@
             <summary>
             Releases the web part context.
             </summary>
-        </member>
-        <member name="M:CMS.Controls.QueryUniView.EnsurePager">
-            <summary>
-            Creates instance of unipager and bind this pager to the current control.
-            </summary>
-        </member>
-        <member name="M:CMS.Controls.QueryUniView.RemovedControl(System.Web.UI.Control)">
-            <summary>
-            Called after a child control is removed from controls collections.
-            Ensures unipager for current control
-            </summary>
-            <param name="control">Control instance</param>
         </member>
         <member name="P:CMS.Controls.QueryUniView.ForceCacheMinutes">
             <summary>

@@ -2038,24 +2038,34 @@
             </summary>
             <remarks>If necessary, document aliases are generated to ensure the documents to be accessible via the original path.</remarks>
         </member>
-        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.#ctor(CMS.DocumentEngine.TreeNode,System.Boolean)">
+        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.#ctor(CMS.DocumentEngine.TreeNode)">
             <summary>
             Creates updater instance to work with given document.
             </summary>
-            <param name="doc">Document to use to propagate the path changes</param>
-            <param name="generateAliasesForDocumentUrlPathChange">Indicates if document aliases should be generated for DocumentUrlPath property changes</param>
+            <param name="node">Document which changes need to be propagated to the descendants</param>
         </member>
-        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.Update">
+        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.UpdatePaths">
             <summary>
-            Updates the paths in rest of the culture versions of given document and its descendants. Generates document aliases if necessary.
+            Updates the paths in rest of the culture versions of given document and its descendants when document gets updated. 
+            Generates document aliases if necessary.
             </summary>
         </member>
-        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.GetBestMatchingPathPrefixes(System.String,System.String,System.Collections.Generic.SortedDictionary{System.String,CMS.DocumentEngine.DocumentPathsUpdater.PrefixPaths})">
+        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.UpdatePathsForNewCultureVersion">
+            <summary>
+            Updates the paths in rest of the culture versions of given document and its descendants when new culture version is created. 
+            Generates document alias based on node alias path change if necessary.
+            </summary>
+        </member>
+        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.UpdatePathsForDelete">
+            <summary>
+            Updates the paths in its descendants when a culture version is deleted.
+            </summary>
+        </member>
+        <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.GetBestMatchingPrefixPathsForCulture(System.String,System.Collections.Generic.SortedDictionary{System.String,CMS.DocumentEngine.DocumentPathsUpdater.PrefixPaths})">
             <summary>
             Gets best matching paths from the dictionary of candidates for given culture.
             </summary>
             <param name="culture">Document culture</param>
-            <param name="defaultCulture">Default site culture</param>
             <param name="paths">Dictionary of all possible candidates</param>
             <returns>Best matching candidated based on this priorities:
             1. Paths for given culture
@@ -2064,9 +2074,9 @@
         </member>
         <member name="M:CMS.DocumentEngine.DocumentPathsUpdater.GetPrefixPaths(System.Int32)">
             <summary>
-            Gets name and URL path for each culture version of a parent document.
+            Gets name and URL path for each culture version of a document.
             </summary>
-            <param name="parentId">Node parent ID</param>
+            <param name="nodeId">Node ID</param>
             <returns>Sorted dictionary of parent document paths for each culture version.</returns>
         </member>
         <member name="T:CMS.DocumentEngine.DocumentPathsUpdater.PrefixPaths">
@@ -2100,11 +2110,21 @@
             Gets XML representation of the object
             </summary>
         </member>
+        <member name="M:CMS.DocumentEngine.DocumentPrefixes.Changed">
+            <summary>
+            Indicates if the original and current prefixes are different for at least one prefix
+            </summary>
+        </member>
         <member name="T:CMS.DocumentEngine.DocumentPrefixes.Prefix">
             <summary>
             Represents pair of DocumentNamePath and DocumentUrlPath for a document culture version.
             </summary>
             <remarks>This class is used for serialization of the prefixes information as an input for paths update.</remarks>
+        </member>
+        <member name="M:CMS.DocumentEngine.DocumentPrefixes.Prefix.Changed">
+            <summary>
+            Indicates if the original and current prefixes are different
+            </summary>
         </member>
         <member name="T:CMS.DocumentEngine.DocumentPrefixes.Path">
             <summary>
@@ -13122,9 +13142,9 @@
             If true, node name is automatically updated from the document name when needed
             </summary>
         </member>
-        <member name="F:CMS.DocumentEngine.TreeProvider.mUseNamePathForUrlPath">
+        <member name="F:CMS.DocumentEngine.TreeProvider.mUpdateUrlPath">
             <summary>
-            Indicates if name path can be used for the URL path.
+            Indicates if the URL path should be updated.
             </summary>
         </member>
         <member name="M:CMS.DocumentEngine.TreeProvider.#ctor">
@@ -14207,9 +14227,9 @@
             If true, the document stays checked in on the insert operation
             </summary>
         </member>
-        <member name="P:CMS.DocumentEngine.TreeProvider.UseNamePathForUrlPath">
+        <member name="P:CMS.DocumentEngine.TreeProvider.UpdateUrlPath">
             <summary>
-            Indicates if name path can be used for the URL path. By default it is set to TRUE.
+            Indicates if URL path should be updated.
             </summary>
         </member>
         <member name="P:CMS.DocumentEngine.TreeProvider.ProviderAssemblyName">
@@ -17335,6 +17355,12 @@
             <param name="data">Dataset with the data</param>
             <param name="coupled">Indicates if versioned data should be applied to the coupled data</param>
             <param name="excludedColumns">Set of columns which should not be applied</param>
+        </member>
+        <member name="M:CMS.DocumentEngine.VersionManager.DeleteRecycleBin(System.Int32)">
+            <summary>
+            Deletes all versions from recycle bin for given site.
+            </summary>
+            <param name="siteId">Site ID</param>
         </member>
         <member name="M:CMS.DocumentEngine.VersionManager.GetVersionInternal(CMS.DocumentEngine.VersionHistoryInfo,CMS.DocumentEngine.TreeNode)">
             <summary>

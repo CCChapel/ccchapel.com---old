@@ -2583,10 +2583,9 @@
             </summary>
             <remarks>
             <para>
-            The operation is executed on a snapshot of the dictionary. Therefore,
-            the dictionary's content can be changed by other threads while computing
+            The dictionary's content can be changed by other threads after computing
             the result. If you want to make sure the dictionary's content does
-            not change while computing the real count, use the <see cref="P:CMS.Base.SafeDictionary`2.SyncRoot"/>.
+            not change until the real count is used, use the <see cref="P:CMS.Base.SafeDictionary`2.SyncRoot"/>.
             </para>
             <para>
             Important: When the dictionary uses weak references, no lock can guarantee you

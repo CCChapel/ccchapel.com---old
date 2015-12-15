@@ -372,13 +372,6 @@ public partial class CMSModules_Modules_Pages_Module_UserInterface_Tree : Global
                 return;
             }
 
-            // Delete all ad hoc templates for given ui element
-            UIElementInfo ui = UIElementInfoProvider.GetUIElementInfo(ElementId);
-            if (ui != null)
-            {
-                PageTemplateInfoProvider.DeleteAdHocTemplates(ui.ElementGUID);
-            }
-
             UIElementInfoProvider.DeleteUIElementInfo(ElementId);
             AfterAction("delete", ElementInfo.ElementParentID);
         }

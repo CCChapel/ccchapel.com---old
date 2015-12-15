@@ -53,7 +53,11 @@ public partial class CMSModules_ImportExport_Controls_SelectMasterTemplate : CMS
     public void ReloadData()
     {
         // Load the data
-        DataSet templates = PageTemplateInfoProvider.GetAllMasterTemplates();
+        DataSet templates = PageTemplateInfoProvider.GetTemplates()
+                                                    .WhereTrue("PageTemplateIsReusable")
+                                                    .WhereTrue("PageTemplateShowAsMasterTemplate")
+                                                    .OrderBy("PageTemplateDisplayName")
+                                                    .Columns("PageTemplateID", "PageTemplateDisplayName", "PageTemplateDescription", "PageTemplateThumbnailGUID", "PageTemplateIconClass");
 
         ucSelector.DataSource = templates;
         ucSelector.IDColumn = "PageTemplateID";

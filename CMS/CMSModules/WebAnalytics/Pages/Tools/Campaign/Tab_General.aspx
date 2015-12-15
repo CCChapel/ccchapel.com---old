@@ -218,13 +218,15 @@
                 id="Button1" 
                 data-ng-click="launchCampaign()" 
                 class="btn btn-primary" 
-                data-ng-if="model.campaign.campaignID && model.campaign.status === 'Draft'">{{"campaign.launch"|resolve}}
+                data-ng-if="model.campaign.campaignID && model.campaign.status === 'Draft'"
+                data-ng-disabled="formController.$invalid || savingInProgress">{{"campaign.launch"|resolve}}
             </button>
             <button 
                 id="Button2" 
                 data-ng-click="finishCampaign()" 
                 class="btn btn-primary" 
-                data-ng-if="model.campaign.campaignID && model.campaign.status === 'Launched'">{{"campaign.finish"|resolve}}
+                data-ng-if="model.campaign.campaignID && model.campaign.status === 'Launched'"
+                data-ng-disabled="formController.$invalid || savingInProgress">{{"campaign.finish"|resolve}}
             </button>
         </div>
     </cms-autosave>

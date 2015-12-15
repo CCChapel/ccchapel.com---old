@@ -5629,7 +5629,7 @@ pre {
 }
 
 .Forum, .ForumContent, .ForumSearchResults {
-    background: url('/App_Themes/CorporateSite/Images/bg_contentBox.png') no-repeat top left;
+    background: url('../CorporateSite/Images/bg_contentBox.png') no-repeat top left;
 }
 
 .ForumGroup .Table tr.Forum:nth-child(even) {

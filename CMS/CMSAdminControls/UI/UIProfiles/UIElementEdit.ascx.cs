@@ -96,10 +96,10 @@ public partial class CMSAdminControls_UI_UIProfiles_UIElementEdit : CMSUserContr
     {
         bool displayNone = false;
         bool currentIsCustomizedOfInstalled = false;
+        elemInfo = UIContext.EditedObject as UIElementInfo;
 
-        if ((UIContext.EditedObject != null) && ((UIElementInfo)UIContext.EditedObject).ElementID > 0)
+        if (elemInfo != null && elemInfo.ElementID > 0)
         {
-            elemInfo = (UIElementInfo)UIContext.EditedObject;
             ParentID = elemInfo.ElementParentID;
 
             EditForm.FieldControls["ElementPageTemplateID"].SetValue("ItemGuid", elemInfo.ElementGUID);
@@ -186,7 +186,7 @@ public partial class CMSAdminControls_UI_UIProfiles_UIElementEdit : CMSUserContr
                 {
                     Text = GetString("general.customize"),
                     CommandName = "customize",
-                    OnClientClick = "if (!confirm("+ ScriptHelper.GetString(ResHelper.GetString("module.customizeconfirm"))+")) { return false; }"
+                    OnClientClick = "if (!confirm(" + ScriptHelper.GetString(ResHelper.GetString("module.customizeconfirm")) + ")) { return false; }"
                 });
 
                 master.HeaderActions.ActionPerformed += HeaderActions_ActionPerformed;

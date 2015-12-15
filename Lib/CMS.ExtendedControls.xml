@@ -1462,6 +1462,11 @@
             Indicates if security parameters in macros are handled automatically.
             </summary>
         </member>
+        <member name="P:CMS.ExtendedControls.CMSTextBox.DecodeMacrosBeforeSign">
+            <summary>
+            Indicates if macro expressions should be decoded before security parameters are computed. Default <c>False</c>.
+            </summary>
+        </member>
         <member name="P:CMS.ExtendedControls.CMSTextBox.IsLiveSite">
             <summary>
             Indicates if control is used on live site.

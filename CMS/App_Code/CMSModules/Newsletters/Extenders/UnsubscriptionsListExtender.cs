@@ -7,6 +7,7 @@ using CMS.Base;
 using CMS.Core;
 using CMS.ExtendedControls;
 using CMS.Helpers;
+using CMS.Membership;
 using CMS.SiteProvider;
 using CMS.UIControls;
 using CMS.Newsletters;
@@ -42,6 +43,11 @@ public class UnsubscriptionsListExtender : ControlExtender<UniGrid>
     /// </summary>
     private void Control_ActionDelete(string actionName, object actionArgument)
     {
+        if (!UserInfoProvider.IsAuthorizedPerResource(ModuleName.NEWSLETTER, "ManageSubscribers", SiteContext.CurrentSiteName, MembershipContext.AuthenticatedUser, false))
+        {
+            CMSPage.RedirectToAccessDenied("cms.newsletter", "managesubscribers");
+        }
+
         string email = ValidationHelper.GetString(actionArgument, string.Empty);
         if (actionName == "remove" && !string.IsNullOrEmpty(email))
         {

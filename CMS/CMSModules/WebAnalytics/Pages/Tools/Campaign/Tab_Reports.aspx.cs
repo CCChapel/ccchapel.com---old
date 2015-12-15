@@ -83,9 +83,11 @@ public partial class CMSModules_WebAnalytics_Pages_Tools_Campaign_Tab_Reports : 
                           .GroupBy(key => key.ConversionID, (key, group) =>
                           {
                               var groupList = group.ToList();
+                              var conversion = ConversionInfoProvider.GetConversionInfo(key);
                               return new
                               {
-                                  Name = ConversionInfoProvider.GetConversionInfo(key).ConversionDisplayName,
+                                  DisplayName = conversion.ConversionDisplayName,
+                                  CodeName = conversion.ConversionName,
                                   Items = groupList,
                                   Sum = groupList.Sum(x => x.ConversionHits)
                               };
@@ -96,7 +98,7 @@ public partial class CMSModules_WebAnalytics_Pages_Tools_Campaign_Tab_Reports : 
         double onePercentOfFirstItemSum = conversionSourcesById.First().Sum / 100.0;
         var chartData = conversionSourcesById.Select(x => new
         {
-            title = x.Name,
+            title = x.DisplayName,
             value = x.Sum,
             percent = onePercentOfFirstItemSum > 0 ? Decimal.Round(x.Sum / (decimal)onePercentOfFirstItemSum) : 0,
             formattedValue = x.Sum.ToString("N0"),
@@ -127,8 +129,8 @@ public partial class CMSModules_WebAnalytics_Pages_Tools_Campaign_Tab_Reports : 
         // Create table header
         foreach (var conversion in conversionSourcesById)
         {
-            AddColumnToGridView(gridChannels, conversion.Name, conversion.Name);
-            table.Columns.Add(conversion.Name, typeof(string));
+            AddColumnToGridView(gridChannels, conversion.CodeName, conversion.DisplayName);
+            table.Columns.Add(conversion.CodeName, typeof(string));
         }
 
         // Create table rows
@@ -149,7 +151,7 @@ public partial class CMSModules_WebAnalytics_Pages_Tools_Campaign_Tab_Reports : 
             foreach (var item in conversionSourcesById)
             {
                 var conversion = item.Items.Where(x => x.SourceName == channel.Key).ToList();
-                dr[item.Name] = conversion.Any() ? conversion.First().ConversionHits.ToString("N0") : "0";
+                dr[item.CodeName] = conversion.Any() ? conversion.First().ConversionHits.ToString("N0") : "0";
             }
 
             table.Rows.Add(dr);
@@ -198,7 +200,7 @@ public partial class CMSModules_WebAnalytics_Pages_Tools_Campaign_Tab_Reports : 
                 TabName = "Newsletter.Issue.Reports.Overview"
             }));
 
-            yield return "<a href=\"" + url + "\" target=\"_blank\">" + HTMLHelper.HTMLEncode(issue.GetValue("IssueSubject").ToString()) + "</a>";
+            yield return "<a href=\"" + url + "\" target=\"_top\">" + HTMLHelper.HTMLEncode(issue.GetValue("IssueSubject").ToString()) + "</a>";
         }
     }
 

@@ -39,7 +39,7 @@ public partial class CMSModules_MessageBoards_Tools_Messages_Message_List : CMSM
         {
             HeaderAction action = new HeaderAction();
             action.Text = GetString("Board.MessageList.NewMessage");
-            action.OnClientClick = "modalDialog('" + AuthenticationHelper.ResolveDialogUrl("~/CMSModules/MessageBoards/Tools/Messages/Message_Edit.aspx") + "?boardId=" + mBoardId + "&changemaster=" + QueryHelper.GetBoolean("changemaster", false) + "', 'MessageEdit', 800, 535); return false;";
+            action.OnClientClick = "modalDialog('" + AuthenticationHelper.ResolveDialogUrl("~/CMSModules/MessageBoards/Tools/Messages/Message_Edit.aspx") + "?boardId=" + mBoardId + "&changemaster=" + QueryHelper.GetBoolean("changemaster", false) + "', 'MessageEdit', 360, 490); return false;";
             CurrentMaster.HeaderActions.AddAction(action);
         }
     }

@@ -653,8 +653,8 @@ public partial class CMSModules_Departments_FormControls_DepartmentSectionsManag
         // Get department template source document
         TreeNode sourceNode = DocumentHelper.GetDocument(SiteContext.CurrentSiteName, DepartmentTemplatePath, null, true, null, null, null, TreeProvider.ALL_LEVELS, false, null, TreeProvider);
 
-        // Copy relevant template data to department document
-        if (sourceNode != null)
+        // Copy relevant template data to department document. Proceed only when creating a department, updating a department must not rewrite its data with template's data.
+        if (Form.IsInsertMode && (sourceNode != null))
         {
             string excludeColumns = "DocumentName;NodeAlias;DocumentTagGroupID;DocumentStylesheetID;DocumentPublishFrom;DocumentPublishTo";
             DocumentHelper.CopyNodeData(sourceNode, editedNode, new CopyNodeDataSettings(true, true, false, true, true, false, false, false, excludeColumns));

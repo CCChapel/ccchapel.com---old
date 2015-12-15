@@ -7,7 +7,7 @@
 <cms:CMSUpdatePanel ID="pnlUpdate" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <cms:MessagesPlaceHolder ID="plcMess" runat="server" />
-        <cms:UniGrid runat="server" ID="gridElem" ObjectType="om.contactlist" OrderBy="ContactLastName"
+        <cms:UniGrid runat="server" ID="gridElem" ObjectType="om.contact" OrderBy="ContactLastName"
             Columns="ContactID,ContactLastName,ContactFirstName,ContactEmail,ContactStatusID,ContactCountryID,ContactSiteID,ContactMergedWithContactID,ContactGlobalContactID, ContactCreated"
             IsLiveSite="false" HideFilterButton="true" RememberDefaultState="true" RememberStateByParam="issitemanager" FilterLimit="0">
             <GridActions Parameters="ContactID">

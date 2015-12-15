@@ -91,6 +91,7 @@
          * Performs update over given asset.
          */
         Controller.prototype.autosave = function (asset) {
+            EventHub.publish("savingStarted", this.getContext(asset.assetID));
             this.assetResource.update(asset, this.autosaveFinished.bind(this), this.saveFailed.bind(this, asset.assetID));
         };
 

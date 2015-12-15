@@ -10,6 +10,7 @@ using CMS.Core;
 using CMS.DataEngine;
 using CMS.ExtendedControls;
 using CMS.Helpers;
+using CMS.LicenseProvider;
 using CMS.Newsletters;
 using CMS.PortalEngine;
 using CMS.PortalEngine.Internal;
@@ -104,8 +105,8 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
             .WhereEquals("IssueVariantOfIssueID", mIssue.IssueID)
             .GetListResult<int>();
 
-        mParentAndVariantsIDs.Add(mIssue.IssueID);       
-        
+        mParentAndVariantsIDs.Add(mIssue.IssueID);
+
         if (!ShouldDisplayOverviewPage())
         {
             ShowInformation(GetString("newsletter.issue.overviewnotsentyet"));
@@ -124,14 +125,19 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
         // Set campaign link
         if (issueForm.FieldControls.Contains("IssueUTMCampaign"))
         {
-            issueForm.FieldControls["IssueUTMCampaign"].Value = GetUtmCampaignNameHtmlOutput();
+            bool areCampaignsAvailable = LicenseKeyInfoProvider.IsFeatureAvailable(RequestContext.CurrentDomain, FeatureEnum.CampaignAndConversions);
+
+            issueForm.FieldControls["IssueUTMCampaign"].Value =
+                areCampaignsAvailable ?
+                GetUtmCampaignNameHtmlOutput() :
+                mIssue.IssueUTMCampaign;
         }
 
         // Init engagement statistics
         InitEngagement();
         InitFunnel();
         InitOverview();
-        
+
         pnlDelivery.Visible = mMonitorBouncedEmails;
 
         // Ensure tooltips
@@ -176,8 +182,8 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
 
     private bool ShouldDisplayOverviewPage()
     {
-        return ((mIssue.IssueStatus == IssueStatusEnum.Finished) 
-             || (mIssue.IssueStatus == IssueStatusEnum.Sending) 
+        return ((mIssue.IssueStatus == IssueStatusEnum.Finished)
+             || (mIssue.IssueStatus == IssueStatusEnum.Sending)
              || (mIssue.IssueStatus == IssueStatusEnum.TestPhase));
     }
 
@@ -229,7 +235,7 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
         CreateAndSetColumn(table, "clickrate", CalculateUniqueClickRate());
         CreateAndSetColumn(table, "unsubscriptions", mIssue.IssueUnsubscribed);
         CreateAndSetColumn(table, "unsubscriptionrate", CalculateUnsubscriptionRate());
-        
+
 
         // Assign dataset to unigrid source
         var ds = new DataSet();
@@ -311,15 +317,15 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
         }
     }
 
-    
+
     private string GetUtmCampaignNameHtmlOutput()
     {
-        CampaignInfo campaign = CampaignInfoProvider.GetCampaignInfo(mIssue.IssueUTMCampaign, CurrentSiteName);
+        CampaignInfo campaign = CampaignInfoProvider.GetCampaignByUTMCode(mIssue.IssueUTMCampaign, CurrentSiteName);
 
         // Is issue linked to an existing campaign
         if (campaign != null)
         {
-            var campaignDetailUrl = Service.Entry<IUILinkProvider>().GetSingleObjectLink(CampaignInfo.TYPEINFO.ModuleName, CAMPAIGN_ELEMENT_CODENAME, 
+            var campaignDetailUrl = Service.Entry<IUILinkProvider>().GetSingleObjectLink(CampaignInfo.TYPEINFO.ModuleName, CAMPAIGN_ELEMENT_CODENAME,
                                                                         new ObjectDetailLinkParameters
                                                                         {
                                                                             ObjectIdentifier = campaign.CampaignID,
@@ -338,7 +344,7 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
         return mIssue.IssueUTMCampaign;
     }
 
-    
+
     private int CalculateDeliveredEmails()
     {
         return mIssue.IssueSentEmails - mIssue.IssueBounces;
@@ -384,12 +390,12 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
             variantOpens = IssueInfoProvider.GetIssues()
                                             .Column(new AggregatedColumn(AggregationType.Sum, "IssueOpenedEmails"))
                                             .WhereEquals("IssueVariantOfIssueID", mIssue.IssueID)
-                                            .GetScalarResult(0); 
+                                            .GetScalarResult(0);
         }
 
         return mIssue.IssueOpenedEmails + variantOpens;
     }
-    
+
 
     private double CalculateUniqueOpenRate()
     {
@@ -460,6 +466,6 @@ public partial class CMSModules_Newsletters_Tools_Newsletters_Newsletter_Issue_O
             data = graphData,
         });
     }
-    
+
     #endregion
 }

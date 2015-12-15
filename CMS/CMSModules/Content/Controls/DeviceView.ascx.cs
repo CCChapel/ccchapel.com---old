@@ -8,8 +8,8 @@ public partial class CMSModules_Content_Controls_DeviceView : CMSAdminControl
 {
     #region "Variables"
 
-    protected string mViewPage = null;
-    protected string framescroll = "auto";
+    private string mViewPage;
+    private string mFramescroll = "auto";
 
     #endregion
 
@@ -38,6 +38,30 @@ public partial class CMSModules_Content_Controls_DeviceView : CMSAdminControl
         set
         {
             mViewPage = value;
+        }
+    }
+
+
+    /// <summary>
+    /// Returns encoded URL of page
+    /// </summary>
+    protected String ViewPageSource
+    {
+        get
+        {
+            return HTMLHelper.EncodeForHtmlAttribute(ViewPage);
+        }
+    }
+
+
+    /// <summary>
+    /// Returns frame scrolling value depending on device
+    /// </summary>
+    protected string FrameScroll
+    {
+        get
+        {
+            return mFramescroll;
         }
     }
 
@@ -87,7 +111,7 @@ public partial class CMSModules_Content_Controls_DeviceView : CMSAdminControl
         if ((deviceProfile != null) && (deviceProfile.ProfilePreviewWidth > 0) && (deviceProfile.ProfilePreviewHeight > 0))
         {
             // Remove frame scrolling
-            framescroll = "no";
+            mFramescroll = "no";
 
             // Register device css from site name folder or design folder
             DeviceProfileInfoProvider.RegisterDeviceProfileCss(Page, deviceProfile.ProfileName);

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Web;
 
 using CMS.ExtendedControls;
 using CMS.Helpers;
 using CMS.PortalEngine;
 using CMS.UIControls;
 using CMS.Base;
-using CMS.SiteProvider;
 using CMS.Membership;
 
 public partial class CMSModules_Content_CMSDesk_View_View : CMSContentPage
@@ -68,10 +66,7 @@ public partial class CMSModules_Content_CMSDesk_View_View : CMSContentPage
         editMenu.UseSmallIcons = true;
         editMenu.IsLiveSite = false;
 
-        var pageUrl = string.Empty;
-
-        pageUrl = DocumentUIHelper.GetViewPageUrl();
-        ucView.ViewPage = pageUrl;
+        ucView.ViewPage = DocumentUIHelper.GetViewPageUrl();
         ucView.RotateDevice = ValidationHelper.GetBoolean(CookieHelper.GetValue(CookieName.CurrentDeviceProfileRotate), false);
 
         const string deviceRotateScript = @"
@@ -92,29 +87,9 @@ $cmsj(document).ready(function () {
 
         if (Node.NodeIsContentOnly)
         {
-            // Preview link is not valid after going through worflow because DocumentWorkflowCycleGUID has changed
+            // Preview link is not valid after going through workflow because DocumentWorkflowCycleGUID has changed
             DocumentManager.OnAfterAction += (obj, args) => { ucView.ViewPage = Node.GetPreviewLink(MembershipContext.AuthenticatedUser.UserName); };
         }
-    }
-
-    #endregion
-
-
-    #region "Methods"
-
-    /// <summary>
-    /// Checks if given URL matches with the presentation URL of current site. Redirects to info page if not.
-    /// </summary>
-    /// <param name="url">URL to be checked.</param>
-    private void CheckExternalPageUrl(string url)
-    {
-        var presentationUrl = SiteContext.CurrentSite.SitePresentationURL;
-        if (!string.IsNullOrEmpty(presentationUrl) && url.StartsWithCSafe(presentationUrl))
-        {
-            return;
-        }
-
-        RedirectToInformation(GetString("preview.unknownpresentationurl"));
     }
 
     #endregion

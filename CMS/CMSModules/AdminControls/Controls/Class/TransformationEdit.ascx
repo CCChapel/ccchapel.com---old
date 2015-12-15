@@ -14,7 +14,7 @@
     </cms:CMSUpdatePanel>
     <asp:Panel ID="pnlScreen" runat="server" CssClass="PreviewBody">
         <div class="PageContent">
-            <cms:MessagesPlaceHolder runat="server" ID="pnlMessagePlaceholder" IsLiveSite="false" OffsetX="16" OffsetY="16" />
+            <cms:MessagesPlaceHolder runat="server" ID="pnlMessagePlaceholder" IsLiveSite="false"/>
             <cms:UIForm FieldGroupHeadingIsAnchor="False" runat="server" ID="editElem" ObjectType="cms.transformation" OnOnAfterDataLoad="editElem_OnAfterDataLoad"
                 RedirectUrlAfterCreate="" RefreshHeader="true" DefaultFieldLayout="TwoColumns">
                 <LayoutTemplate>

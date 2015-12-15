@@ -348,7 +348,7 @@ public partial class CMSModules_Ecommerce_FormControls_DepartmentSelector : Site
 
     private void TryInitByForm()
     {
-        if ((Form == null) || !Form.AdditionalData.ContainsKey("DataClassID"))
+        if ((Value != null) || (Form == null) || !Form.AdditionalData.ContainsKey("DataClassID"))
         {
             return;
         }

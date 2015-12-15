@@ -1,9 +1,10 @@
 ﻿using System;
 
+using CMS.Base;
 using CMS.FormControls;
 using CMS.Helpers;
+using CMS.Modules;
 using CMS.PortalEngine;
-using CMS.Base;
 using CMS.SiteProvider;
 
 public partial class CMSModules_PortalEngine_FormControls_PageTemplates_SelectPageTemplate : FormEngineUserControl
@@ -354,7 +355,9 @@ public partial class CMSModules_PortalEngine_FormControls_PageTemplates_SelectPa
         {
             int templateId = PageTemplateInfo.PageTemplateId;
 
-            plcUIClone.Visible = PageTemplateInfo.IsReusable;
+            // Hide Clone as AdHoc button for page templates when is used for UIElement edit page and UIElement does not exists
+            var uiElement = Form.EditedObject as UIElementInfo;
+            plcUIClone.Visible = uiElement != null ? (PageTemplateInfo.IsReusable && uiElement.ElementID > 0) : PageTemplateInfo.IsReusable;
 
             if (Enabled)
             {
@@ -363,7 +366,7 @@ public partial class CMSModules_PortalEngine_FormControls_PageTemplates_SelectPa
 
                 // Set buttons
                 btnSave.OnClientClick = String.Format(
-                    "modalDialog('{0}?selectorid={1}{2}&templateId={3}&siteid={4}', 'SaveNewTemplate', 700, 400); return false;", 
+                    "modalDialog('{0}?selectorid={1}{2}&templateId={3}&siteid={4}', 'SaveNewTemplate', 700, 400); return false;",
                     ResolveUrl("~/CMSModules/PortalEngine/UI/Layout/SaveNewPageTemplate.aspx"),
                     ClientID,
                     root,
@@ -377,8 +380,8 @@ public partial class CMSModules_PortalEngine_FormControls_PageTemplates_SelectPa
                 btnEditTemplateProperties.OnClientClick = String.Format("modalDialog('{0}', 'Template edit', '95%', '95%'); return false;", url);
 
                 btnClone.OnClientClick = String.Format(
-                    "if (confirm({0})) {1};return false;", 
-                    ScriptHelper.GetString(GetString("pageselector.cloneasadhoc")), 
+                    "if (confirm({0})) {1};return false;",
+                    ScriptHelper.GetString(GetString("pageselector.cloneasadhoc")),
                     Page.ClientScript.GetPostBackEventReference(btnFullPostback, null)
                 );
             }

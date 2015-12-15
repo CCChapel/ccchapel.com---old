@@ -78,18 +78,20 @@ public partial class CMSModules_Staging_Tools_Controls_StagingTasksFilter : Stag
     {
         btnFilter.Click += btnFilter_Click;
         btnReset.Click += btnReset_Click;
+        stagingTaskGroupSelector.ObjectType = TaskGroupInfo.OBJECT_TYPE;
 
         var currentUserField = new SpecialField();
         currentUserField.Text = GetString("staging.currentUser");
         currentUserField.Value = CMSActionContext.CurrentUser.UserID.ToString();
         userSelector.UniSelector.SpecialFields.Add(currentUserField);
 
-        stagingTaskGroupSelector.ObjectType = TaskGroupInfo.OBJECT_TYPE;
-
-        if (!TaskGroupSelectorEnabled)
+        if (!RequestHelper.IsPostBack())
         {
-            stagingTaskGroupPanel.Visible = false;
-            stagingTaskGroupSelector.StopProcessing = true;
+            if (!TaskGroupSelectorEnabled)
+            {
+                stagingTaskGroupPanel.Visible = false;
+                stagingTaskGroupSelector.StopProcessing = true;
+            }
         }
     }
 

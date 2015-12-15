@@ -172,6 +172,15 @@ function DestroyCrop() {
     if ((frames['imageFrame'] != null) && frames['imageFrame'].destroyCrop) {
         frames['imageFrame'].destroyCrop();
     }
+    ResetCropValues();
+}
+
+function ResetCropValues() {
+    txtCropX.val('0');
+    txtCropY.val('0');
+    txtCropWidth.val('0');
+    txtCropHeight.val('0');
+    chkCropLock.checked = false;
 }
 
 function InitializeEditor() {
@@ -240,11 +249,6 @@ function InitializeEditor() {
         DestroyCrop();
         InitCrop();
 
-        txtCropX.val('0');
-        txtCropY.val('0');
-        txtCropWidth.val('0');
-        txtCropHeight.val('0');
-        chkCropLock.checked = false;
         $cmsj('span[id$=lblCropError]').hide();
 
         return false;

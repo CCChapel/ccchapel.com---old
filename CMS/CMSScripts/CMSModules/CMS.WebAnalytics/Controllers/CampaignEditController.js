@@ -37,6 +37,25 @@
             $scope.$on("autosaveForm", function (event, formController) {
                 $scope.formController = formController;
             });
+
+            // Collection of contexts being curretly in saving process
+            this.itemsBeingSaved = {}
+            // Is true if itemsBeingSaved contain some fields
+            this.$scope.savingInProgress = false;
+
+            var that = this;
+            EventHub.subscribe("savingStarted", function (context) {
+                that.itemsBeingSaved[context] = true;
+                $scope.savingInProgress = true;
+            });
+
+            this.savingFinished = function (context) {
+                delete that.itemsBeingSaved[context];
+                $scope.savingInProgress = Object.getOwnPropertyNames(that.itemsBeingSaved).length > 0;
+            };
+
+            EventHub.subscribe("savingFinished", this.savingFinished);
+            EventHub.subscribe("savingFailed", this.savingFinished);
         };
 
 
@@ -46,6 +65,7 @@
          */
         Controller.prototype.autosave = function () {
             var method = this.getAutosaveMethod();
+            EventHub.publish("savingStarted", this.context);
             method.call(this, this.$scope.model.campaign, this.autosaveFinished.bind(this), this.autosaveFailed.bind(this));
         };
 

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * Bootstrap v3.1.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -204,6 +204,7 @@
   color: #b12628;
 }
 .cms-bootstrap .cms-campaigns-edit .form-control.ng-invalid {
+  outline: 0;
   border-bottom: 2px solid #b12628;
 }
 .cms-bootstrap .cms-campaigns-edit .campaign-form-category ul {
@@ -915,7 +916,7 @@
   border-radius: 3px;
   box-sizing: border-box;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   height: 76px;
   width: 100%;
 }
@@ -3964,7 +3965,7 @@
   display: inline-block;
   box-sizing: border-box;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .cms-bootstrap .CM.code-mirror-focused {
   border-bottom: 2px solid #1175ae;
@@ -4398,7 +4399,7 @@
   border-radius: 3px;
   box-sizing: border-box;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .cms-bootstrap .form-search-container input:-moz-placeholder {
   color: #504e4c;
@@ -4480,7 +4481,7 @@
   border-radius: 3px;
   box-sizing: border-box;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   width: 80px;
   position: absolute;
   top: 225px;
@@ -4542,7 +4543,7 @@
   border-radius: 3px;
   box-sizing: border-box;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   width: 80px;
   position: absolute;
   top: 225px;
@@ -5452,6 +5453,11 @@
   width: 100%;
   min-width: 576px;
 }
+.cms-bootstrap .database-separation .install-wizard,
+.cms-bootstrap .database-join .install-wizard {
+  max-width: 576px;
+  margin: 0 auto;
+}
 .cms-bootstrap .task-error {
   color: #b12628;
   padding: 0 4px;
@@ -5467,9 +5473,6 @@
   padding: 30px 20px 10px;
 }
 .cms-bootstrap .separation-header {
-  width: 620px !important;
-  margin: auto !important;
-  position: relative !important;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;

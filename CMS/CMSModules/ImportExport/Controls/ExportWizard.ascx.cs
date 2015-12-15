@@ -585,7 +585,7 @@ StartSelectionTimer();");
         pnlExport.Settings = ExportSettings;
         pnlExport.ReloadData();
 
-        wzdExport.ActiveStepIndex++;
+        wzdExport.ActiveStepIndex = 1;
 
         ltlScriptAfter.Text += ScriptHelper.GetScript("StopSelectionTimer();");
     }

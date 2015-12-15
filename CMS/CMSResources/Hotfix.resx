@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administration-User_List.ErrorDefaultUser" xml:space="preserve">
+    <value>You cannot delete the default global administrator user account. The default user can be specified through the &lt;strong&gt;Settings -&gt; System -&gt; Default user ID&lt;/strong&gt; setting.</value>
+  </data>
 </root>

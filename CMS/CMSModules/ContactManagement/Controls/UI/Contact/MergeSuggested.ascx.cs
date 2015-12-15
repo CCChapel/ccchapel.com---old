@@ -280,8 +280,13 @@ public partial class CMSModules_ContactManagement_Controls_UI_Contact_MergeSugge
         StringBuilder script = new StringBuilder();
         script.Append(@"modalDialog('" + ResolveUrl(url) + @"', 'mergeDialog', 700, 700, null, null, true);");
 
+        string urlWithQueryString = URLHelper.AddParameterToUrl(RequestContext.CurrentURL, "saved", "true");
+        string refreshPageScript = ScriptHelper.GetScript("function RefreshPage() { " +
+                                                              "window.location.replace('" + ScriptHelper.GetString(urlWithQueryString, encapsulate: false) + "'); " +
+                                                          "}");
+
         ScriptHelper.RegisterStartupScript(this, typeof(string), "MergeDialog" + ClientID, ScriptHelper.GetScript(script.ToString()));
-        ScriptHelper.RegisterClientScriptBlock(this, typeof(string), "RefreshPageScript", ScriptHelper.GetScript("function RefreshPage() { window.location.replace('" + URLHelper.AddParameterToUrl(RequestContext.CurrentURL, "saved", "true") + "'); }"));
+        ScriptHelper.RegisterClientScriptBlock(this, typeof(string), "RefreshPageScript", refreshPageScript);
     }
 
     #endregion

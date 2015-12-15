@@ -120,7 +120,9 @@ function US_ProcessItem(clientId, valuesSeparator, chkbox, changeChecked) {
         }
     }
     else {
-        var re = new RegExp(valuesSeparator + item + valuesSeparator, 'i');
+        // Escape the following special characters for regular expression: \ ^ $ * + ? . ( ) | { } [ ]
+        var expSeparator = valuesSeparator.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        var re = new RegExp(expSeparator + item + expSeparator, 'i');
         items = items.replace(re, valuesSeparator);
     }
     itemsElem.value = items;
