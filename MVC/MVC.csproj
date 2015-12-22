@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{633795A8-4088-4879-8AC0-B63CD6C9701E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVC</RootNamespace>
+    <AssemblyName>MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMS.AmazonStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.AmazonStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.ApplicationDashboard, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ApplicationDashboard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Automation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.AzureStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.AzureStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.BannerManagement, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.BannerManagement.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Base, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Blogs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Blogs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Chat, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Chat.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.CKEditor, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CKEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.CMSSiteMapProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CMSSiteMapProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Community, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Community.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.ContinuousIntegration, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ContinuousIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Controls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Controls.XmlSerializers, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Controls.XmlSerializers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.CustomTables, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CustomTables.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.DataCom, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataCom.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.DataEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.DataProviderSQL, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataProviderSQL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.DocumentEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DocumentEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.DocumentWebServices, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DocumentWebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Ecommerce, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Ecommerce.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.EcommerceProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EcommerceProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.EmailEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EmailEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.EventLog, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EventLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.EventManager, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EventManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.ExtendedControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ExtendedControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.FileSystemStorage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FileSystemStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.FormControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FormControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.FormEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FormEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Forums, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Forums.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Globalization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Globalization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.HealthMonitoring, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.HealthMonitoring.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Helpers, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.ImportExport, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ImportExport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.IO, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.LicenseProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.LicenseProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.LicenseProvider.XmlSerializers, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.LicenseProvider.XmlSerializers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Localization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Localization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.MacroEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MacroEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.MediaLibrary, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MediaLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Membership, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Membership.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.MembershipProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MembershipProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.MessageBoards, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MessageBoards.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Messaging, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Messaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Modules, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Modules.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.ModuleUsageTracking, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ModuleUsageTracking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Mvc, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Newsletters, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Newsletters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Notifications, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Notifications.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.OnlineForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OnlineForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.OnlineMarketing, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OnlineMarketing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.OutputFilter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OutputFilter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Personas, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Personas.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Polls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Polls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.PortalControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.PortalControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.PortalEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.PortalEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Protection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Protection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Relationships, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Relationships.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Reporting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Reporting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Routing.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Routing.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SalesForce, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SalesForce.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Scheduler, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Scheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Search, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Search.Lucene3, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.Lucene3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Search.TextExtractors, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.TextExtractors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SearchProviderSQL, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SearchProviderSQL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SharePoint, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SharePoint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SiteProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SiteProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SocialMarketing, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SocialMarketing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SocialMedia, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SocialMedia.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.StrandsRecommender, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.StrandsRecommender.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Synchronization, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Synchronization.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Synchronization.WSE3, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.WSE3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.SynchronizationEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SynchronizationEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Taxonomy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Taxonomy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.Tests, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Tests.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.TranslationServices, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.TranslationServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.UIControls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.UIControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.URLRewritingEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.URLRewritingEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.VirtualPathProvider, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.VirtualPathProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WebAnalytics, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebAnalytics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WebApi, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WebDAV, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebDAV.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WebFarmSync, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebFarmSync.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WebServices, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WIFIntegration, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WIFIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WinServiceEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WinServiceEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CMS.WorkflowEngine, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WorkflowEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation, Version=3.2.4.4, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\FiftyOne.Foundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GlobalLink.ProjectDirector.WebServices, Version=4.2.2.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\GlobalLink.ProjectDirector.WebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ITHit.WebDAV.Server, Version=2.1.1.170, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\ITHit.WebDAV.Server.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kentico.Google.Apis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Kentico.Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kentico.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Web.Mvc.1.0.1\lib\net45\Kentico.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net.v3, Version=3.0.3.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Lucene.Net.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net.WordNet.SynExpand, Version=2.0.0.1, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Lucene.Net.WordNet.SynExpand.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaxMindGEOIP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\MaxMindGEOIP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PDFClown, Version=0.1.2.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\PDFClown.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode, Version=9.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\ThoughtWorks.QRCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ude, Version=0.1.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Ude.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\ApplicationConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\mimetypes.txt" />
+    <Content Include="CMSDependencies\AjaxControlToolkit.4.1.60919.0\AjaxControlToolkit.dll" />
+    <Content Include="CMSDependencies\AjaxMin.4.96.4941.15381\AjaxMin.dll" />
+    <Content Include="CMSDependencies\AWSSDK.1.5.60.1\AWSSDK.dll" />
+    <Content Include="CMSDependencies\ClosedXML.0.68.1.0\ClosedXML.dll" />
+    <Content Include="CMSDependencies\DocumentFormat.OpenXml.2.0.5022.0\DocumentFormat.OpenXml.dll" />
+    <Content Include="CMSDependencies\DotNetOpenAuth.4.0.0.11165\DotNetOpenAuth.dll" />
+    <Content Include="CMSDependencies\Facebook.6.0.10.0\Facebook.dll" />
+    <Content Include="CMSDependencies\HtmlAgilityPack.1.4.0.0\HtmlAgilityPack.dll" />
+    <Content Include="CMSDependencies\ICSharpCode.SharpZipLib.0.85.3.365\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="CMSDependencies\Interop.IWshRuntimeLibrary.1.0.0.0\Interop.IWshRuntimeLibrary.dll" />
+    <Content Include="CMSDependencies\LinkedIn.1.0.0.0\LinkedIn.dll" />
+    <Content Include="CMSDependencies\LinqToTwitter.2.1.12.0\LinqToTwitter.dll" />
+    <Content Include="CMSDependencies\Microsoft.IdentityModel.3.5.0.0\Microsoft.IdentityModel.dll" />
+    <Content Include="CMSDependencies\Microsoft.SharePoint.Client.15.0.0.0\Microsoft.SharePoint.Client.dll" />
+    <Content Include="CMSDependencies\Microsoft.SharePoint.Client.Runtime.15.0.0.0\Microsoft.SharePoint.Client.Runtime.dll" />
+    <Content Include="CMSDependencies\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="CMSDependencies\Microsoft.Web.Services3.3.0.0.0\Microsoft.Web.Services3.dll" />
+    <Content Include="CMSDependencies\Mono.Cecil.0.9.6.0\Mono.Cecil.dll" />
+    <Content Include="CMSDependencies\NetSpell.SpellChecker.2.1.7.25114\NetSpell.SpellChecker.dll" />
+    <Content Include="CMSDependencies\Newtonsoft.Json.6.0.0.0\Newtonsoft.Json.dll" />
+    <Content Include="CMSDependencies\NSubstitute.1.8.1.0\NSubstitute.dll" />
+    <Content Include="CMSDependencies\NuGet.Core.2.8.50506.491\NuGet.Core.dll" />
+    <Content Include="CMSDependencies\nunit.framework.2.6.3.13283\nunit.framework.dll" />
+    <Content Include="CMSDependencies\OpenPop.2.0.4.369\OpenPop.dll" />
+    <Content Include="CMSDependencies\System.Net.Http.Formatting.5.2.2.0\System.Net.Http.Formatting.dll" />
+    <Content Include="CMSDependencies\System.Web.Http.5.2.2.0\System.Web.Http.dll" />
+    <Content Include="CMSDependencies\System.Web.Http.WebHost.5.2.2.0\System.Web.Http.WebHost.dll" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CMSResources\CMS.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53938</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53938/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
