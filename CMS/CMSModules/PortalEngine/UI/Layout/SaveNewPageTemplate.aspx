@@ -7,17 +7,6 @@
 <%@ Register Src="~/CMSFormControls/System/CodeName.ascx" TagName="CodeName" TagPrefix="cms" %>
 
 <asp:Content ID="cntBody" runat="server" ContentPlaceHolderID="plcContent">
-    <script type="text/javascript">
-        //<![CDATA[
-        function SelectTemplate(templateId) {
-            if (wopener.OnSelectPageTemplate)
-            {
-                wopener.OnSelectPageTemplate(templateId, 'refresh');
-            }
-            CloseDialog();
-        }
-        //]]>
-    </script>
     <asp:Panel runat="server" ID="pnlContent">
         <div class="form-horizontal">
             <div class="form-group">

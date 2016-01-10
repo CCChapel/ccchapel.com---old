@@ -1066,7 +1066,7 @@ public partial class CMSWebParts_Viewers_Documents_cmsdatalist : CMSAbstractWebP
         }
 
         // Hide the Add button for selected items which have the SelectedItem transformation specified
-        if (lstElem.IsSelected && !string.IsNullOrEmpty(lstElem.SelectedItemTransformationName))
+        if (!String.IsNullOrEmpty(lstElem.SelectedItemTransformationName) && lstElem.IsSelected)
         {
             btnAdd.Visible = false;
         }

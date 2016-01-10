@@ -30,7 +30,6 @@ public partial class CMSModules_BizForms_Controls_BizFormEditData : CMSAdminEdit
     protected bool mShowSelectFieldsButton = true;
     protected string className = null;
     protected string primaryColumn = null;
-    protected string columnNames = null;
     private bool isDialog = false;
 
     #endregion
@@ -261,7 +260,6 @@ public partial class CMSModules_BizForms_Controls_BizFormEditData : CMSAdminEdit
                 var selectedColumns = GetSelectedColumns(columns);
 
                 columns = string.Empty;
-                columnNames = string.Empty;
                 StringBuilder sb = new StringBuilder();
 
                 // Remove nonexisting columns
@@ -273,15 +271,15 @@ public partial class CMSModules_BizForms_Controls_BizFormEditData : CMSAdminEdit
                         sb.Append(",[").Append(col).Append("]");
                     }
                 }
-                columnNames = sb.ToString();
+                string columnNames = sb.ToString();
 
                 // Ensure primary key
-                if (!(columnNames.Contains(primaryColumn) || columnNames.Contains(primaryColumn)))
+                if (!columnNames.Contains(primaryColumn))
                 {
                     columnNames = ",[" + primaryColumn + "]" + columnNames;
                 }
 
-                columnNames = columnNames.TrimStart(',');
+                gridData.Columns = columnNames.TrimStart(',');
             }
 
             // Get macro resolver for current form
@@ -310,6 +308,7 @@ public partial class CMSModules_BizForms_Controls_BizFormEditData : CMSAdminEdit
                 {
                     Caption = fieldCaption,
                     Source = column,
+                    ExternalSourceName = ((ffi != null) && ffi.DataType.EqualsCSafe(FieldDataType.Date, true)) ? "#date" : null,
                     AllowSorting = true,
                     Wrap = false
                 };

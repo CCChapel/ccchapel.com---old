@@ -95,6 +95,16 @@
             Returns string representation of datetime.
             </summary>
         </member>
+        <member name="M:CMS.MacroEngine.DateTimeContainer.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <param name="format">The format to use or a null reference to use the default format defined for the type of the <see cref="T:System.IFormattable"/> implementation. </param>
+            <param name="formatProvider">The provider to use to format the value or a null reference to obtain the numeric format information from the current locale setting of the operating system. </param>
+        </member>
         <member name="M:CMS.MacroEngine.DateTimeContainer.Equals(System.Object)">
             <summary>
             Returns true if date times are same.
@@ -406,6 +416,16 @@
             <summary>
             Returns string representation of datetime.
             </summary>
+        </member>
+        <member name="M:CMS.MacroEngine.TimeSpanContainer.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <param name="format">The format to use or a null reference to use the default format defined for the type of the <see cref="T:System.IFormattable"/> implementation. </param>
+            <param name="formatProvider">The provider to use to format the value or a null reference to obtain the numeric format information from the current locale setting of the operating system. </param>
         </member>
         <member name="M:CMS.MacroEngine.TimeSpanContainer.Equals(System.Object)">
             <summary>

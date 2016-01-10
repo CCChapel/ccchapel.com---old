@@ -47,7 +47,10 @@
         var getMaxFileSize = function () {
             var size = 0;
             for (var i = 0, l = files.length; i < l; i++) {
-                size += files[i].size;
+                var fileSize = files[i].size;
+                if (size < fileSize) {
+                    size = fileSize;
+                }
             }
             return size;
         };
@@ -281,7 +284,7 @@
                 theString = theString.replace(regEx, arguments[i]);
             }
 
-            return theString;
+            return theString.replace('\\n', '\n');
         };
 
         // Clears selected file in FileUploader.

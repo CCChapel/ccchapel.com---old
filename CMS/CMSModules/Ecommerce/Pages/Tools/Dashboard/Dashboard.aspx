@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body  class="<%=BodyClass%>">
+<body class="<%=HTMLHelper.EncodeForHtmlAttribute(BodyClass) %>">
     <form id="form1" runat="server">
         <cms:Dashboard ID="ucDashboard" runat="server" ShortID="d" />
     </form>

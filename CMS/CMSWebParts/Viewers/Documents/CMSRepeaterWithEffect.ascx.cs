@@ -1189,7 +1189,7 @@ public partial class CMSWebParts_Viewers_Documents_CMSRepeaterWithEffect : CMSAb
         }
 
         // Hide the Add button for selected items which have the SelectedItem transformation specified
-        if (repItems.IsSelected && !string.IsNullOrEmpty(repItems.SelectedItemTransformationName))
+        if (!String.IsNullOrEmpty(repItems.SelectedItemTransformationName) && repItems.IsSelected)
         {
             btnAdd.Visible = false;
         }

@@ -559,12 +559,16 @@ public partial class CMSModules_PortalEngine_Controls_Layout_TemplateLayoutEdit 
             }
 
             radCustom.Text = GetString("TemplateLayout.Custom");
-            radCustom.Attributes.Add("onclick", "window.location = '" + URLHelper.AddParameterToUrl(URLHelper.AddParameterToUrl(RequestContext.CurrentURL, "newshared", "0"), "oldshared", drpLayout.Value.ToString()) + "'");
+
+            var sanitizedCurrentUrl = ScriptHelper.GetString(RequestContext.CurrentURL, encapsulate: false);
+            var customLayoutUrl = URLHelper.AddParameterToUrl(URLHelper.AddParameterToUrl(sanitizedCurrentUrl, "newshared", "0"), "oldshared", drpLayout.Value.ToString());
+
+            radCustom.Attributes.Add("onclick", "window.location = '" + customLayoutUrl + "'");
 
             radShared.Text = GetString("TemplateLayout.Shared");
             if (drpLayout.UniSelector.HasData)
             {
-                radShared.Attributes.Add("onclick", "window.location = '" + URLHelper.AddParameterToUrl(RequestContext.CurrentURL, "newshared", drpLayout.Value + "") + "'");
+                radShared.Attributes.Add("onclick", "window.location = '" + URLHelper.AddParameterToUrl(sanitizedCurrentUrl, "newshared", drpLayout.Value + "") + "'");
             }
 
             // Get the current layout type

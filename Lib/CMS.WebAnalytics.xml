@@ -1604,6 +1604,13 @@
             <summary>
             Returns contact ID for e-mail address.
             </summary>
+            <returns>Returns contact id for given email address, returns 0 if contact is not found or online marketing module is not available. In case of multiple matches first contact is returned.</returns>
+        </member>
+        <member name="M:CMS.WebAnalytics.ActivityLogHelper.FindContactIdByEmail(System.String,System.Int32)">
+            <summary>
+            Finds contact for given e-mail address.
+            </summary>
+            <returns>Returns contact id for given email address, returns 0 if contact is not found. In case of multiple matches first contact is returned.</returns>
         </member>
         <member name="M:CMS.WebAnalytics.ActivityLogHelper.GetActivityDependencyCacheKeys(System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>
@@ -1611,6 +1618,33 @@
             </summary>
             <param name="contactIDs">IDs of the contacts whose activities were created</param>
             <returns>List of cache dependencies which should be touched after inserting a batch of activities</returns>
+        </member>
+        <member name="P:CMS.WebAnalytics.ActivityLogHelper.OnlineMarketingModuleAvailability">
+            <summary>
+            Provides access to OnlineMarketingModuleAvailability, setter is intended for mocking in tests only
+            </summary>
+        </member>
+        <member name="T:CMS.WebAnalytics.IModuleAvailability">
+            <summary>
+            Provides information about module availability.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.IModuleAvailability.IsAvailable">
+            <summary>
+            Checks whether module is available.
+            </summary>
+            <returns>Returns <c>True</c> if module is available.</returns>
+        </member>
+        <member name="T:CMS.WebAnalytics.OnlineMarketingModuleAvailability">
+            <summary>
+            Provides information about online marketing module availability.
+            </summary>
+        </member>
+        <member name="M:CMS.WebAnalytics.OnlineMarketingModuleAvailability.IsAvailable">
+            <summary>
+            Checks whether OnlineMarketing module is available.
+            </summary>
+            <returns>Returns <c>True</c> if OnlineMarketing module is available.</returns>
         </member>
         <member name="T:CMS.WebAnalytics.AssetController">
             <summary>

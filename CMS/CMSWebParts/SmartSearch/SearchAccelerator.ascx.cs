@@ -134,7 +134,7 @@ public partial class CMSWebParts_SmartSearch_SearchAccelerator : CMSAbstractWebP
 
             string serviceUrl = URLHelper.GetAbsoluteUrl(URLHelper.AddParameterToUrl(RequestContext.CurrentURL, "getsearchaccelerator", ClientID));
 
-            btnAcc.OnClientClick = "window.external.AddService('" + serviceUrl + "'); return false;";
+            btnAcc.OnClientClick = "window.external.AddService('" + ScriptHelper.GetString(serviceUrl, encapsulate: false) + "'); return false;";
         }
     }
 

@@ -161,7 +161,7 @@ public partial class CMSModules_ContactManagement_Controls_UI_ContactGroup_Accou
                 }
             }
 
-            // Initialize contact selector
+            // Initialize account selector
             accountSelector.UniSelector.OnItemsSelected += UniSelector_OnItemsSelected;
             accountSelector.UniSelector.SelectionMode = SelectionModeEnum.MultipleButton;
             accountSelector.UniSelector.DialogButton.ResourceString = "om.account.addaccount";
@@ -199,7 +199,7 @@ public partial class CMSModules_ContactManagement_Controls_UI_ContactGroup_Accou
     /// </summary>
     private object gridElem_OnExternalDataBound(object sender, string sourceName, object parameter)
     {
-        CMSGridActionButton btn = null;
+        CMSGridActionButton btn;
         switch (sourceName.ToLowerCSafe())
         {
             case "edit":
@@ -229,6 +229,7 @@ public partial class CMSModules_ContactManagement_Controls_UI_ContactGroup_Accou
     /// </summary>
     private void gridElem_OnBeforeDataReload()
     {
+        gridElem.DataSource = GetFilteredAccountsFromView().Result;
         gridElem.NamedColumns["SiteName"].Visible = !(siteID > 0) && (siteID != UniSelector.US_GLOBAL_RECORD) && readSiteAccounts;
     }
 
@@ -327,10 +328,7 @@ public partial class CMSModules_ContactManagement_Controls_UI_ContactGroup_Accou
         {
             // All items
             case What.All:
-                var accountIds = new ObjectQuery("om.contactgroupaccountlist")
-                    .Column("AccountID")
-                    .Where(gridElem.WhereCondition)
-                    .Where(gridElem.WhereClause);
+                var accountIds = GetFilteredAccountsFromView().Column("AccountID");
 
                 where.WhereIn("ContactGroupMemberRelatedID", accountIds);
                 break;
@@ -373,6 +371,17 @@ public partial class CMSModules_ContactManagement_Controls_UI_ContactGroup_Accou
 
 
     #region "Methods"
+
+    /// <summary>
+    /// Returns query containing accounts filtered by the Unigrid conditions.
+    /// </summary>
+    private ObjectQuery<AccountInfo> GetFilteredAccountsFromView()
+    {
+        return new ObjectQuery<AccountInfo>().From("View_OM_ContactGroupMember_AccountJoined")
+                                             .Where(gridElem.WhereCondition)
+                                             .Where(gridElem.WhereClause);
+    }
+
 
     /// <summary>
     /// Returns WHERE condition

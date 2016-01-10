@@ -764,7 +764,8 @@ public partial class CMSModules_PortalEngine_Controls_OnSiteEdit_EditToolbar : C
         // LiveID sign out URL is set if this LiveID session (otherwise the CurrentURL is used)
         AuthenticationHelper.SignOut(ref signOutUrl);
 
-        ScriptHelper.RegisterStartupScript(this, typeof(string), "livesiteScript", ScriptHelper.GetScript("location.replace('" + signOutUrl + "');"));
+        var sanitizedSignOutUrl = ScriptHelper.GetString(signOutUrl, encapsulate: false);
+        ScriptHelper.RegisterStartupScript(this, typeof(string), "livesiteScript", ScriptHelper.GetScript("location.replace('" + sanitizedSignOutUrl + "');"));
     }
 
 

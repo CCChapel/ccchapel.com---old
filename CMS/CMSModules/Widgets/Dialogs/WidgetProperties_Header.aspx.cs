@@ -4,18 +4,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
 
-using CMS.Controls.Configuration;
-
 using CMS.ExtendedControls;
 using CMS.Helpers;
 using CMS.PortalControls;
 using CMS.PortalEngine;
 using CMS.Base;
-using CMS.SiteProvider;
-using CMS.Membership;
 using CMS.UIControls;
 using CMS.DocumentEngine;
-using CMS.Modules;
 
 public partial class CMSModules_Widgets_Dialogs_WidgetProperties_Header : CMSWidgetPropertiesPage
 {
@@ -195,11 +190,11 @@ public partial class CMSModules_Widgets_Dialogs_WidgetProperties_Header : CMSWid
                 documentationUrl = URLHelper.UpdateParameterInUrl(documentationUrl, "widgetid", wi.WidgetID.ToString());
             }
 
-            string docScript = "NewWindow('" + documentationUrl + "', 'WebPartPropertiesDocumentation', 800, 800); return false;";
+            string docScript = "NewWindow('" + ScriptHelper.GetString(documentationUrl, encapsulate: false) + "', 'WebPartPropertiesDocumentation', 800, 800); return false;";
             string tooltip = GetString("help.tooltip");
             ltr.Text += String.Format
                 ("<div class=\"action-button\"><a onclick=\"{0}\" href=\"#\"><span class=\"sr-only\">{1}</span><i class=\"icon-modal-question cms-icon-80\" title=\"{1}\" aria-hidden=\"true\"></i></a></div>",
-                    docScript, tooltip);
+                    HTMLHelper.EncodeForHtmlAttribute(docScript), tooltip);
 
             tabsElem.OnTabCreated += tabElem_OnTabCreated;
             tabsElem.UrlTarget = "widgetpropertiescontent";

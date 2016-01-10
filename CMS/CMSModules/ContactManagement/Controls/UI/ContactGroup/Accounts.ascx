@@ -12,8 +12,8 @@
     <cms:MessagesPlaceHolder ID="plcMess" runat="server" />
     <cms:CMSUpdatePanel ID="pnlUpdate" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <cms:UniGrid runat="server" ID="gridElem" OrderBy="AccountName" ObjectType="om.contactgroupaccountlist"
-                ShowObjectMenu="false" IsLiveSite="false" Columns="AccountID,AccountName,AccountStatusID,AccountCountryID,AccountSiteID" RememberStateByParam="issitemanager">
+            <cms:UniGrid runat="server" ID="gridElem" OrderBy="AccountName" ShowObjectMenu="false" IsLiveSite="false" 
+                Columns="AccountID,AccountName,AccountStatusID,AccountCountryID,AccountSiteID" RememberStateByParam="issitemanager">
                 <GridActions Parameters="AccountID">
                     <ug:Action Name="edit" Caption="$om.account.viewdetail$" FontIconClass="icon-edit" FontIconStyle="Allow"
                         CommandArgument="AccountID" ModuleName="CMS.OnlineMarketing" ExternalSourceName="edit" />

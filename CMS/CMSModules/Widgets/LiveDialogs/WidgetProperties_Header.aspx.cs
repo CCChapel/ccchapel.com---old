@@ -159,11 +159,11 @@ public partial class CMSModules_Widgets_LiveDialogs_WidgetProperties_Header : CM
                 documentationUrl = URLHelper.UpdateParameterInUrl(documentationUrl, "widgetid", wi.WidgetID.ToString());
             } 
             
-            string docScript = "NewWindow('" + documentationUrl + "', 'WebPartPropertiesDocumentation', 800, 800); return false;";
+            string docScript = "NewWindow('" + ScriptHelper.GetString(documentationUrl, encapsulate: false) + "', 'WebPartPropertiesDocumentation', 800, 800); return false;";
             string tooltip = GetString("help.tooltip");
             ltr.Text += String.Format
                 ("<div class=\"action-button\"><a onclick=\"{0}\" href=\"#\"><span class=\"sr-only\">{1}</span><i class=\"icon-modal-question cms-icon-80\" title=\"{1}\" aria-hidden=\"true\"></i></a></div>",
-                    docScript, tooltip);
+                    HTMLHelper.EncodeForHtmlAttribute(docScript), tooltip);
         }
     }
 

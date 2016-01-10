@@ -8,7 +8,7 @@
 
 		    $cmsj(document).ready(function () {
 		        var continueButtonId = "<%= ContinueButton.ClientID %>";
-		        var authorizationSetupUrl = "<%= AuthorizationSetupUrl %>";
+		        var authorizationSetupUrl = "<%= ScriptHelper.GetString(AuthorizationSetupUrl) %>";
 		        var authorizationSetupHandlerUrl = "<%= AuthorizationSetupHandlerUrl %>";
 
 		        $cmsj.ajax(authorizationSetupHandlerUrl, {

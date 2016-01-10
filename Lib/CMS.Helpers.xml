@@ -13259,6 +13259,12 @@
             </summary>
             <param name="inputText">Input text to encode</param>
         </member>
+        <member name="M:CMS.Helpers.HTMLHelper.EncodeForHtmlComment(System.String)">
+            <summary>
+            Encodes string to be used in a HTML comment.
+            </summary>
+            <param name="inputText">Input text to encode</param>
+        </member>
         <member name="M:CMS.Helpers.HTMLHelper.FixFormAction(System.String,System.String)">
             <summary>
             Fixes the form action attribute within given HTML code.

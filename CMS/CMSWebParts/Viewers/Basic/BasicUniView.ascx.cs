@@ -483,7 +483,7 @@ public partial class CMSWebParts_Viewers_Basic_BasicUniView : CMSAbstractWebPart
     protected void LoadTransformations()
     {
         CMSBaseDataSource docDataSource = DataSourceControl;
-        if ((docDataSource != null) && (docDataSource.IsSelected) && (!String.IsNullOrEmpty(SelectedItemTransformationName)))
+        if (!String.IsNullOrEmpty(SelectedItemTransformationName) && (docDataSource != null) && docDataSource.IsSelected)
         {
             basicUniView.ItemTemplate = CMSAbstractDataProperties.LoadTransformation(this, SelectedItemTransformationName);
 

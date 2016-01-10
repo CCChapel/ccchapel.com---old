@@ -384,7 +384,7 @@
             Returns true if externally handled task did not execute for more than certain amount of times.
             </summary>
             <param name="taskInfo">Information about the task</param>
-            <param name="timesToBeTooLate">How many times must not the task run before it is considered too long</param>
+            <param name="timesToBeTooLate">How many scheduler intervals must not the task run before it is considered too long</param>
             <param name="currentTime">Date and time to resolve against, if null DateTime.Now is used</param>
         </member>
         <member name="M:CMS.Scheduler.SchedulingHelper.GetFirstRunTime(CMS.Scheduler.TaskInterval,System.Nullable{System.DateTime})">

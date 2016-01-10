@@ -1377,7 +1377,7 @@ public partial class CMSModules_SmartSearch_Controls_SearchResults : CMSUserCont
                 // Check if search action was fired really on the live site
                 if (PortalContext.ViewMode.IsLiveSite() && (DocumentContext.CurrentPageInfo != null))
                 {
-                    if (AnalyticsHelper.AnalyticsEnabled(siteName))
+                    if (AnalyticsHelper.AnalyticsEnabled(siteName) && !string.IsNullOrEmpty(searchText))
                     {
                         if (AnalyticsHelper.JavascriptLoggingEnabled(siteName))
                         {

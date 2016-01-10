@@ -13847,7 +13847,15 @@
             </summary>
             <param name="node">Document</param>
         </member>
-        <member name="M:CMS.DocumentEngine.TreeProvider.GetSelectNodesQuery(System.Boolean,System.String,System.Collections.Generic.List{System.String},System.Int32,System.String,System.String,System.Guid,System.String,CMS.DocumentEngine.RelationshipSideEnum,System.Boolean,System.Boolean,System.String,System.Int32,System.String,System.String,System.Boolean,System.Boolean)">
+        <member name="M:CMS.DocumentEngine.TreeProvider.GetIncludeCoupledDataType(System.Collections.Generic.List{System.String},System.Boolean,System.String)">
+            <summary>
+            Returns type of including coupled columns into result
+            </summary>
+            <param name="classNames">List of the class names</param>
+            <param name="selectAllData">Indicates if all data should be selected (including coupled data)</param>
+            <param name="columns">Columns to select</param>
+        </member>
+        <member name="M:CMS.DocumentEngine.TreeProvider.GetSelectNodesQuery(System.Boolean,System.String,System.Collections.Generic.List{System.String},System.Int32,System.String,System.String,System.Guid,System.String,CMS.DocumentEngine.RelationshipSideEnum,System.Boolean,System.Boolean,System.String,System.Int32,System.String,System.String,System.Boolean,System.Boolean,CMS.DocumentEngine.IncludeCoupledDataEnum)">
             <summary>
             Gets document query for nodes selection
             </summary>

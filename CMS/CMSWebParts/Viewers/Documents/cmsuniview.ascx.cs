@@ -1533,7 +1533,7 @@ public partial class CMSWebParts_Viewers_Documents_cmsuniview : CMSAbstractWebPa
         }
 
         // Hide the Add button for selected items which have the SelectedItem transformation specified
-        if (uniView.IsSelected && !string.IsNullOrEmpty(uniView.SelectedItemTransformationName))
+        if (!String.IsNullOrEmpty(uniView.SelectedItemTransformationName) && uniView.IsSelected)
         {
             btnAdd.Visible = false;
         }

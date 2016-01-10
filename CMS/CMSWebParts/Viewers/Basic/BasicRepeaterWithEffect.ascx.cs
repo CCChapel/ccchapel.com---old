@@ -593,7 +593,7 @@ public partial class CMSWebParts_Viewers_Basic_BasicRepeaterWithEffect : CMSAbst
     protected void LoadTransformations()
     {
         CMSBaseDataSource docDataSource = DataSourceControl;
-        if ((docDataSource != null) && (docDataSource.IsSelected) && (!String.IsNullOrEmpty(SelectedItemTransformationName)))
+        if (!String.IsNullOrEmpty(SelectedItemTransformationName) && (docDataSource != null) && docDataSource.IsSelected)
         {
             BasicRepeater.ItemTemplate = CMSAbstractDataProperties.LoadTransformation(this, SelectedItemTransformationName);
 

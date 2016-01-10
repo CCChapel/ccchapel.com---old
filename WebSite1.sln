@@ -23,6 +23,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CMS", "CMS\", "{420F4FED-2F
 		SlnRelativePath = "CMS\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{633795A8-4088-4879-8AC0-B63CD6C9701E}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{D3C23387-70E1-4366-8666-9238B048E89E}"
 	ProjectSection(SolutionItems) = preProject
 		Lib\AjaxControlToolkit.dll = Lib\AjaxControlToolkit.dll
@@ -258,8 +260,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{DCB67F1E
 		Lib\Azure\System.Spatial.dll = Lib\Azure\System.Spatial.dll
 		Lib\Azure\System.Spatial.xml = Lib\Azure\System.Spatial.xml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{633795A8-4088-4879-8AC0-B63CD6C9701E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

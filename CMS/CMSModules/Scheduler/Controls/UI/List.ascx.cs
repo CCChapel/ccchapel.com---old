@@ -182,7 +182,7 @@ public partial class CMSModules_Scheduler_Controls_UI_List : CMSAdminListControl
                             {
                                 var taskInfo = new TaskInfo(dataRowView.Row);
 
-                                imgButton.Visible = SchedulingHelper.IsExternalTaskTooLate(taskInfo, 3);
+                                imgButton.Visible = SchedulingHelper.IsExternalTaskTooLate(taskInfo, 10);
 
                                 if (imgButton.Visible)
                                 {

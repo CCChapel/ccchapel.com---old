@@ -432,6 +432,63 @@
             Current test name
             </summary>
         </member>
+        <member name="T:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration">
+            <summary>
+            Represents a configuration of the test environment related to CMS dependencies.
+            </summary>
+            <remarks>
+            CMS dependencies are third-party assemblies that Kentico requires to run.
+            They are kept in a special folder to prevent version conflicts.
+            The runtime is configured to look in this folder when a referenced assembly is not found.
+            This configuration allows developers to use different versions of third-party assemblies then Kentico does.
+            </remarks>
+        </member>
+        <member name="F:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.mDependenciesFolderName">
+            <summary>
+            The name of the folder with CMS dependencies.
+            </summary>
+        </member>
+        <member name="F:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.mDependenciesSettingName">
+            <summary>
+            The name of the setting with the path to the folder that contains CMS dependencies.
+            </summary>
+        </member>
+        <member name="F:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.mExceptionMessage">
+            <summary>
+            The message of the exception that is thrown when the folder with CMS dependencies is not found.
+            </summary>
+        </member>
+        <member name="F:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.mDependenciesFolderPath">
+            <summary>
+            The path to the folder with CMS dependencies.
+            </summary>
+        </member>
+        <member name="M:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration"/> class.
+            </summary>
+            <param name="dependenciesFolderPath">The path to the folder with CMS dependencies.</param>
+        </member>
+        <member name="M:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.Create">
+            <summary>
+            Detects the path to the folder with CMS dependencies.
+            </summary>
+            <remarks>
+            This method uses the following strategies to locate the folder with CMS dependencies:
+            <list type="bullet">
+            <item><description>Look for the CMSTestDependenciesFolderPath application setting in the test configuration file.</description></item>
+            <item><description>Look for the CMSDependencies subfolder in the folder where the test assembly is located. This strategy is intended for projects that use the Kentico.Libraries NuGet package.</description></item>
+            <item><description>Look for the CMS/CMSDependencies subfolder in the CMS solution folder. This is the original strategy for test projects that are a part of the CMS solution.</description></item>
+            </list>
+            </remarks>
+            <returns>A configuration object with a detected path to an existing folder with CMS dependencies.</returns>
+            <exception cref="T:System.IO.DirectoryNotFoundException">The folder with CMS dependencies was not found.</exception>
+        </member>
+        <member name="P:CMS.Tests.AutomatedTests.CmsDependenciesConfiguration.DependenciesFolderPath">
+            <summary>
+            Gets the path to the folder with CMS dependencies.
+            </summary>
+        </member>
         <member name="M:CMS.Tests.AutomatedTestsWithData.TestsWithDataFixtureSetup">
             <summary>
             Fixture setup
@@ -1048,6 +1105,22 @@
             <summary>
             <para>Indicates if the same database is used for all tests in same test class.</para>
             </summary>
+        </member>
+        <member name="T:CMS.Tests.FakeSettingsService">
+            <summary>
+            Fake settings service
+            </summary>
+        </member>
+        <member name="P:CMS.Tests.FakeSettingsService.IsAvailable">
+            <summary>
+            Always returns true
+            </summary>
+        </member>
+        <member name="P:CMS.Tests.FakeSettingsService.Item(System.String)">
+            <summary>
+            Settings key
+            </summary>
+            <param name="keyName">Settings key</param>
         </member>
         <member name="T:CMS.Tests.TestsCategoryCheck">
             <summary>

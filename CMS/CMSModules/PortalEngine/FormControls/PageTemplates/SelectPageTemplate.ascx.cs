@@ -435,12 +435,21 @@ function PTS_Select(selectorId, rootCategoryId) {
     return false;
 } 
 
+function OnSaveAsNewPageTemplate(templateId, selectorId) {
+    PageTemplateChanged_UpdateSelector(templateId, selectorId);
+}
+
 function OnSelectPageTemplate(templateId, selectorId) { 
+    PageTemplateChanged_UpdateSelector(templateId, selectorId);
+}
+
+function PageTemplateChanged_UpdateSelector(templateId, selectorId) {
     document.getElementById(selectorId + '_hdnTemplateChanged').value = 'true';
     var hid = document.getElementById(selectorId + '_hdnSelected');
     hid.value = templateId;
     window['PTS_' + selectorId]();
 }
+
 function PTS_Clear(selectorId) { 
     document.getElementById(selectorId + '_hdnTemplateChanged').value = 'true';
     document.getElementById(selectorId + '_txtTemplate').value = ''; 

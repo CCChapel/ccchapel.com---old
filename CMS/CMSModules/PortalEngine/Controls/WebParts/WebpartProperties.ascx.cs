@@ -679,7 +679,7 @@ public partial class CMSModules_PortalEngine_Controls_WebParts_WebpartProperties
     {
         if (webPartInstance != null)
         {
-            lnkExport.OnClientClick = "window.open('GetWebPartProperties.aspx?webpartid=" + webPartInstance.ControlID + "&webpartguid=" + webPartInstance.InstanceGUID + "&aliaspath=" + AliasPath + "&zoneid=" + ZoneID + "&templateid="+ PageTemplateID + "'); return false;";
+            lnkExport.OnClientClick = "window.open('GetWebPartProperties.aspx?webpartid=" + webPartInstance.ControlID + "&webpartguid=" + webPartInstance.InstanceGUID + "&aliaspath=" + ScriptHelper.GetString(AliasPath, encapsulate: false) + "&zoneid=" + ScriptHelper.GetString(ZoneID, encapsulate: false) + "&templateid="+ PageTemplateID + "'); return false;";
         }
     }
 

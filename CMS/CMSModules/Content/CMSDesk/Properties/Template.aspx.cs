@@ -154,16 +154,18 @@ function RefreshPage() {
     document.location.replace(document.location);
 }
 
-function OnSelectPageTemplate(templateId, action) {
+function SetTemplateToHdnField(templateId) {
     document.getElementById('" + hdnSelected.ClientID + @"').value = templateId;
-    if (action == 'refresh') {
-        // Refresh page if request is from 'Save as new page template' dialog
-        RefreshPage();
-    }
-    else {
-        // Do post back to the Select button if request is from the 'Page template' selector
-        " + ClientScript.GetPostBackEventReference(btnSelect, String.Empty) + @"
-    }
+}
+
+function OnSaveAsNewPageTemplate(templateId, selectorId) {
+    SetTemplateToHdnField(templateId);
+    RefreshPage();
+}
+
+function OnSelectPageTemplate(templateId, selectorId) {
+    SetTemplateToHdnField(templateId);
+    " + ClientScript.GetPostBackEventReference(btnSelect, String.Empty) + @"
 }"));
 
         // Reflect processing action

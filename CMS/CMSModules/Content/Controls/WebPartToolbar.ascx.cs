@@ -305,7 +305,7 @@ var WPTImgBaseSrc = '""" + ResolveUrl("~/CMSPages/GetMetaFile.aspx?maxsidesize=6
                     Literal ltlComm = ((Literal)e.Item.FindControl("ltlCategorytComment"));
                     if (ltlComm != null)
                     {
-                        ltlComm.Text = "<!-- " + GetParentCategories(dr) + " -->";
+                        ltlComm.Text = "<!-- " + HTMLHelper.EncodeForHtmlComment(GetParentCategories(dr)) + " -->";
                     }
 
                     // Build the web part image html

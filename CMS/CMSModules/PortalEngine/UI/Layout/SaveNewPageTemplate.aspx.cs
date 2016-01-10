@@ -126,9 +126,7 @@ public partial class CMSModules_PortalEngine_UI_Layout_SaveNewPageTemplate : CMS
                             AssignNewTemplateToDocument(documentId, pt.PageTemplateId);
                         }
 
-                        string script = "SelectTemplate(" + pt.PageTemplateId + ");";
-                        
-                        ltlScript.Text = ScriptHelper.GetScript(script);
+                        RegisterPageTemplateSavedScript();
                     }
                 }
                 catch (Exception ex)
@@ -141,6 +139,22 @@ public partial class CMSModules_PortalEngine_UI_Layout_SaveNewPageTemplate : CMS
                 ShowError(result);
             }
         }
+    }
+
+
+    /// <summary>
+    /// PageTemplate was changed in dialog, we have to change data in page template selector via wopener.
+    /// </summary>
+    private void RegisterPageTemplateSavedScript()
+    {
+        string selectorId = QueryHelper.GetString("selectorid", String.Empty);
+
+        ScriptHelper.RegisterStartupScript(this, typeof(string), "SaveAsNewTemplate", ScriptHelper.GetScript(@"
+        if (wopener.OnSaveAsNewPageTemplate)
+        {
+            wopener.OnSaveAsNewPageTemplate(" + pt.PageTemplateId + ", " + ScriptHelper.GetString(selectorId) + @");
+        };
+        CloseDialog();"));
     }
 
 

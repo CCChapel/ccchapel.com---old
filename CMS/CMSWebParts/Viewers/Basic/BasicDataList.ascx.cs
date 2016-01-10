@@ -471,7 +471,7 @@ public partial class CMSWebParts_Viewers_Basic_BasicDataList : CMSAbstractWebPar
     protected void LoadTransformations()
     {
         CMSBaseDataSource docDataSource = DataSourceControl as CMSBaseDataSource;
-        if ((docDataSource != null) && (docDataSource.IsSelected) && (!String.IsNullOrEmpty(SelectedItemTransformationName)))
+        if (!String.IsNullOrEmpty(SelectedItemTransformationName) && (docDataSource != null) && docDataSource.IsSelected)
         {
             BasicDataList.ItemTemplate = CMSDataProperties.LoadTransformation(this, SelectedItemTransformationName);
 

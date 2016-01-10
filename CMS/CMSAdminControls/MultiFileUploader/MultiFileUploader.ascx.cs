@@ -850,7 +850,7 @@ public partial class CMSAdminControls_MultiFileUploader_MultiFileUploader : CMSU
 
         var resources = new List<String>
                                      {
-                                         "multifileuploader.errormaxnumbertoupload",
+                                         "multifileuploader.maxnumbertoupload",
                                          "multifileuploader.maxuploadamount",
                                          "multifileuploader.maxuploadsize",
                                          "multifileuploader.extensionnotallowed"
